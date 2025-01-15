@@ -6,30 +6,30 @@
     <title>Anuvind Pramod - Curriculum Vitae</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            background-color: #f4f4f9;
+            background-color: #f8f9fa;
             color: #333;
         }
         header {
-            background: #4CAF50;
+            background-color: #4CAF50;
             color: white;
-            padding: 20px 0;
             text-align: center;
+            padding: 20px 0;
         }
         header h1 {
-            margin: 0;
             font-size: 2.5em;
+            margin: 0;
         }
         header h2 {
-            margin: 5px 0 15px;
             font-size: 1.8em;
-            font-weight: 400;
+            font-weight: normal;
+            margin: 5px 0 10px;
         }
         header p {
             margin: 5px 0;
+            font-size: 1.1em;
         }
         header a {
             color: #FFD700;
@@ -37,17 +37,17 @@
         }
         section {
             margin: 20px auto;
-            max-width: 800px;
+            max-width: 900px;
             background: white;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
-        h2 {
+        section h2 {
+            font-size: 1.6em;
             border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.5em;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
             color: #4CAF50;
         }
         ul {
@@ -65,17 +65,10 @@
             left: 0;
             color: #4CAF50;
         }
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
         .multicol {
             display: flex;
-            gap: 20px;
             flex-wrap: wrap;
+            gap: 20px;
         }
         .column {
             flex: 1;
@@ -83,15 +76,15 @@
         }
         .column h3 {
             margin-top: 0;
-            color: #333;
             font-size: 1.3em;
+            color: #333;
         }
-        .essential-links ul {
-            padding-left: 20px;
-        }
-        .essential-links a {
+        a {
             color: #4CAF50;
-            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
         footer {
             text-align: center;
@@ -103,8 +96,8 @@
 </head>
 <body>
     <header>
-        <h1>Curriculum Vitae</h1>
-        <h2>Anuvind Pramod</h2>
+        <h1>Anuvind Pramod</h1>
+        <h2>Curriculum Vitae</h2>
         <p>4th Year BS-MS Student, Indian Institute of Science Education and Research (IISER), Pune</p>
         <p>Email: <a href="mailto:anuvind.pramod@students.iiserpune.ac.in">anuvind.pramod@students.iiserpune.ac.in</a></p>
     </header>
@@ -118,15 +111,24 @@
         <h2>Education</h2>
         <ul>
             <li><strong>BS-MS (Dual Degree)</strong>, Indian Institute of Science Education and Research (IISER), Pune (<em>Dec 2021 - Present</em>)</li>
-            <li><strong>12th Grade</strong>, St. Antony's Public School, Kottayam (<em>April 2018 - Jan 2020</em>): Graduated with distinction, 92.1</li>
-            <li><strong>10th Grade</strong>, Chinmaya Vidyalaya, Kannur (<em>April 2018</em>): Graduated with distinction, 93</li>
+            <li><strong>12th Grade</strong>, St. Antony's Public School, Kottayam (<em>April 2018 - Jan 2020</em>): Graduated with distinction, 92.1%</li>
+            <li><strong>10th Grade</strong>, Chinmaya Vidyalaya, Kannur (<em>April 2018</em>): Graduated with distinction, 93%</li>
         </ul>
     </section>
 
     <section>
         <h2>Research Experience</h2>
         <ul>
-            <li><strong>Single Cell RNA seq analysis using Python to study the co-expression patterns of YAP and TAZ in breast cancer tissues</strong><br><em>Intern Researcher, Tumor Microenvironment Lab and Leelavati Lab, IISER Pune </em> (Aug 2024 - Jan 2025)<br><em>Studied the co-expression patterns...</em></li>
+            <li>
+                <strong>Single Cell RNA seq analysis using Python to study the co-expression patterns of YAP and TAZ in breast cancer tissues</strong><br>
+                <em>Intern Researcher, Tumor Microenvironment Lab and Leelavati Lab, IISER Pune</em> (Aug 2024 - Jan 2025)<br>
+                Studied co-expression patterns of YAP and TAZ in breast cancer cells and normal mammary epithelial cells using single-cell RNA sequence data analysis. Developed a single-cell analysis pipeline from scratch.
+            </li>
+            <li>
+                <strong>Image analysis to study THBS1 expression in breast cancer patient samples using Multiplex-IF</strong><br>
+                <em>Intern Researcher, Tumor Microenvironment Lab, IISER Pune</em> (Jan 2024 - Aug 2024)<br>
+                Investigated THBS1 expression patterns in different cell types using PanCK and CD3 as markers via multiplex-IF. Performed analysis using Halo and inForm software.
+            </li>
         </ul>
     </section>
 
@@ -134,10 +136,21 @@
         <h2>Skills</h2>
         <div class="multicol">
             <div class="column">
-                <h3>Computational Skills:</h3>
+                <h3>Computational Skills</h3>
                 <ul>
                     <li>Machine Learning (Python)</li>
                     <li>Single-cell RNA seq Analysis (Scanpy)</li>
+                    <li>Deep Learning</li>
+                    <li>Statistical Learning</li>
+                    <li>Multiplex Image Analysis</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Molecular Techniques</h3>
+                <ul>
+                    <li>Molecular Cloning Techniques</li>
+                    <li>Immunohistochemistry</li>
+                    <li>Confocal Microscopy</li>
                 </ul>
             </div>
         </div>
@@ -145,8 +158,9 @@
 
     <section>
         <h2>Essential Links</h2>
-        <ul class="essential-links">
+        <ul>
             <li><a href="https://2023.igem.wiki/iiser-pune-india/attributions">iGEM Project Wiki</a></li>
+            <li><a href="https://github.com/anuvindpramod">GitHub Repository</a></li>
         </ul>
     </section>
 
@@ -155,5 +169,4 @@
     </footer>
 </body>
 </html>
-
 
