@@ -6,42 +6,98 @@
     <title>Anuvind Pramod - Curriculum Vitae</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;  
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
             padding: 0;
             line-height: 1.6;
-        }
-        header, section {
-            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
         }
         header {
+            background: #4CAF50;
+            color: white;
+            padding: 20px 0;
             text-align: center;
         }
-        h1, h2 {
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px;
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
-        h1 {
-            font-size: 2em;
+        header h2 {
+            margin: 5px 0 15px;
+            font-size: 1.8em;
+            font-weight: 400;
+        }
+        header p {
+            margin: 5px 0;
+        }
+        header a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        section {
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
         h2 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
             font-size: 1.5em;
+            color: #4CAF50;
         }
         ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 10px 0;
             padding-left: 20px;
+            position: relative;
+        }
+        ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
         .multicol {
             display: flex;
+            gap: 20px;
             flex-wrap: wrap;
-            justify-content: space-between;
         }
         .column {
-            flex: 0 0 45%;
-            box-sizing: border-box;
+            flex: 1;
+            min-width: 300px;
+        }
+        .column h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.3em;
+        }
+        .essential-links ul {
+            padding-left: 20px;
         }
         .essential-links a {
-            text-decoration: none;
-            color: blue;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 0.9em;
+            color: #777;
         }
     </style>
 </head>
@@ -70,11 +126,10 @@
     <section>
         <h2>Research Experience</h2>
         <ul>
-            <li><strong>Single Cell RNA seq analysis using Python to study the co-expression patterns of YAP and TAZ in breast cancer tissues</strong><br><em>Intern Researcher, Tumor Microenvironment Lab and Leelavati Lab, IISER Pune </em> (Aug 2024 - Jan 2025)<br><em>Studied the co-expression patterns of YAP and TAZ in breast cancer cells and normal mammary epithelial cells by single-cell RNA sequence data analysis using Python to investigate their level of functional redundancy and unique roles. The project involved developing a single cell analysis pipeline for the lab from scratch.</li>
-            <li><strong>Image analysis to study the expression patterns of THBS1 in breast cancer patient samples using Multiplex-IF</strong><br><em>Intern Researcher, Tumor Microenvironment Lab, IISER Pune</em> (Jan 2024 - Aug 2024)<br><em> I studied the expression pattern of THBS1 in different cell types of patient tumor samples using PanCK and CD3 as cell type markers for multiplex-IF and performed multiplex image analysis using Halo and inForm software</li>
-            <li><strong>Producing sustainable aviation fuel from Jatropha Curcas Oil using Yarrowia Lipolytica as chassis</strong><br><em>Head of Wet Lab and Measurements, iGEM IISER Pune 2023</em> (Feb 2023 - Nov 2023)<br><em> I led the Wet Lab team, focusing on gene knockouts, and served as the measurements head. I was responsible for designing and planning the daily experiments and was heavily involved in getting the final proof of concept. I was also involved in computation-based studies and designed the conditions needed for optimal production using statistical learning and DoE. We secured the Best Education Award was nominated for Best Climate Crisis Project, and achieved a top-10 global rank among undergraduate teams </li>
+            <li><strong>Single Cell RNA seq analysis using Python to study the co-expression patterns of YAP and TAZ in breast cancer tissues</strong><br><em>Intern Researcher, Tumor Microenvironment Lab and Leelavati Lab, IISER Pune </em> (Aug 2024 - Jan 2025)<br><em>Studied the co-expression patterns...</em></li>
         </ul>
     </section>
+
     <section>
         <h2>Skills</h2>
         <div class="multicol">
@@ -83,53 +138,22 @@
                 <ul>
                     <li>Machine Learning (Python)</li>
                     <li>Single-cell RNA seq Analysis (Scanpy)</li>
-                    <li>Deep Learning</li>
-                    <li>Statistical Learning</li>
-                    <li>Computer Vision</li>
-                    <li>Multiplex Image Analysis (Halo, inForm)</li>
-                    <li>Protein Visualization (Chimera, PyMOL)</li>
-                    <li>Molecular Docking (AutoDock)</li>
-                    <li>Primer Design (SnapGene, Benchling)</li>
-                    <li>Design of Experiments (JMP)</li>
-                </ul>
-            </div>
-            <div class="column">
-                <h3>Molecular Techniques:</h3>
-                <ul>
-                    <li>Molecular Cloning Techniques</li>
-                    <li>Immunohistochemistry</li>
-                    <li>Multiplex Immunofluorescence</li>
-                    <li>Confocal/Epifluorescence Microscopy</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>Achievements</h2>
-        <ul>
-            <li>Wet Lab Head for Gene Knockouts and Head of Measurements for the iGEM team at IISER Pune. The team secured the Best Education Award was nominated for Best Climate Crisis Project, and clinched a spot among the <strong> top 10 undergraduate teams globally</strong> at iGEM Jamboree in Paris,2023 </li>
-            <li>Represented IISER Pune as a <strong> delegate at the G-20 event Accessible Science</strong> on June 16, 2023</li>
-        </ul>
-    </section>
-
-    <section>
         <h2>Essential Links</h2>
         <ul class="essential-links">
             <li><a href="https://2023.igem.wiki/iiser-pune-india/attributions">iGEM Project Wiki</a></li>
-            <li><a href="https://github.com/anuvindpramod">Github Repository</a></li>
-        </ul>
-    </section> 
-
-    <section>
-        <h2>References</h2>
-        <ul>
-            <li>Dr. Madhura Kulkarni (Senior Scientist), PCCM, IISER Pune: <a href="mailto:madhura.kulkarni@prashanticancercare.org">madhura.kulkarni@prashanticancercare.org</a></li>
-            <li>Dr. Leelavati Narlikar (Associate Professor and Deputy Chair, Data Science), IISER Pune: <a href="mailto:leelavati@iiserpune.ac.in">leelavati@iiserpune.ac.in</a></li>
-            <li>Dr. Mehmet Berkmen (Senior Scientist), New England Biolabs: <a href="berkmen@neb.com">berkmen@neb.com</a></li>
-            <li>Dr. Mridula Nambiar (Assistant Professor), IISER Pune: <a href="mailto:mridula@iiserpune.ac.in">mridula@iiserpune.ac.in</a></li>
         </ul>
     </section>
+
+    <footer>
+        &copy; 2025 Anuvind Pramod
+    </footer>
 </body>
 </html>
+
 
