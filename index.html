@@ -1,142 +1,223 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuvind Pramod - Curriculum Vitae</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;  
-            padding: 0;
-            line-height: 1.6;
-        }
-        header, section {
-            margin: 20px;
-        }
-        header {
-            text-align: center;
-        }
-        h1, h2 {
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px;
-        }
-        h1 {
-            font-size: 2em;
-        }
-        h2 {
-            font-size: 1.5em;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        .multicol {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .column {
-            flex: 0 0 45%;
-            box-sizing: border-box;
-        }
-        .essential-links a {
-            text-decoration: none;
-            color: blue;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Curriculum Vitae</h1>
-        <h2>Anuvind Pramod</h2>
-        <p>4th Year BS-MS Student, Indian Institute of Science Education and Research (IISER), Pune</p>
-        <p>Email: <a href="mailto:anuvind.pramod@students.iiserpune.ac.in">anuvind.pramod@students.iiserpune.ac.in</a></p>
-    </header>
+import React from 'react';
 
-    <section>
-        <h2>Profile</h2>
-        <p>I am pursuing a 5-year BS-MS dual degree in Science, focusing on Biology and Data Science. My passion lies in integrating computational or data science approaches with cancer research and target therapy. I am currently building my expertise in machine learning, deep learning, and computer vision while being proficient in multiplex image analysis using AI-ML based softwares and advanced genomics techniques like single-cell RNA sequencing analysis. These are complemented by a strong foundation in molecular biology techniques and bioinformatics. My goal is to leverage computational studies to advance cancer research.</p>
-    </section>
-
-    <section>
-        <h2>Education</h2>
-        <ul>
-            <li><strong>BS-MS (Dual Degree)</strong>, Indian Institute of Science Education and Research (IISER), Pune (<em>Dec 2021 - Present</em>)</li>
-            <li><strong>12th Grade</strong>, St. Antony's Public School, Kottayam (<em>April 2018 - Jan 2020</em>): Graduated with distinction, 92.1</li>
-            <li><strong>10th Grade</strong>, Chinmaya Vidyalaya, Kannur (<em>April 2018</em>): Graduated with distinction, 93</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Research Experience</h2>
-        <ul>
-            <li><strong>Single Cell RNA seq analysis using Python to study the co-expression patterns of YAP and TAZ in breast cancer tissues</strong><br><em>Intern Researcher, Tumor Microenvironment Lab and Leelavati Lab, IISER Pune </em> (Aug 2024 - Jan 2025)<br><em>Studied the co-expression patterns of YAP and TAZ in breast cancer cells and normal mammary epithelial cells by single-cell RNA sequence data analysis using Python to investigate their level of functional redundancy and unique roles. The project involved developing a single cell analysis pipeline for the lab from scratch.</li>
-            <li><strong>Image analysis to study the expression patterns of THBS1 in breast cancer patient samples using Multiplex-IF</strong><br><em>Intern Researcher, Tumor Microenvironment Lab, IISER Pune</em> (Jan 2024 - Aug 2024)<br><em> I studied the expression pattern of THBS1 in different cell types of patient tumor samples using PanCK and CD3 as cell type markers for multiplex-IF and performed multiplex image analysis using Halo and inForm software</li>
-            <li><strong>Producing sustainable aviation fuel from Jatropha Curcas Oil using Yarrowia Lipolytica as chassis</strong><br><em>Head of Wet Lab and Measurements, iGEM IISER Pune 2023</em> (Feb 2023 - Nov 2023)<br><em> I led the Wet Lab team, focusing on gene knockouts, and served as the measurements head. I was responsible for designing and planning the daily experiments and was heavily involved in getting the final proof of concept. I was also involved in computation-based studies and designed the conditions needed for optimal production using statistical learning and DoE. We secured the Best Education Award was nominated for Best Climate Crisis Project, and achieved a top-10 global rank among undergraduate teams </li>
-        </ul>
-    </section>
-    <section>
-        <h2>Skills</h2>
-        <div class="multicol">
-            <div class="column">
-                <h3>Computational Skills:</h3>
-                <ul>
-                    <li>Machine Learning (Python)</li>
-                    <li>Single-cell RNA seq Analysis (Scanpy)</li>
-                    <li>Deep Learning</li>
-                    <li>Statistical Learning</li>
-                    <li>Computer Vision</li>
-                    <li>Multiplex Image Analysis (Halo, inForm)</li>
-                    <li>Protein Visualization (Chimera, PyMOL)</li>
-                    <li>Molecular Docking (AutoDock)</li>
-                    <li>Primer Design (SnapGene, Benchling)</li>
-                    <li>Design of Experiments (JMP)</li>
-                </ul>
-            </div>
-            <div class="column">
-                <h3>Molecular Techniques:</h3>
-                <ul>
-                    <li>Molecular Cloning Techniques</li>
-                    <li>Immunohistochemistry</li>
-                    <li>Multiplex Immunofluorescence</li>
-                    <li>Confocal/Epifluorescence Microscopy</li>
-                </ul>
-            </div>
+const PersonalWebsite = () => {
+  return (
+    <div className="min-h-screen bg-gray-100 font-sans text-gray-800">
+      {/* Header */}
+      <header className="bg-blue-600 text-white py-12 text-center">
+        <h1 className="text-4xl font-bold mb-2">Anuvind Pramod</h1>
+        <p className="text-xl">4th Year BS-MS Student | IISER Pune</p>
+        <div className="mt-4 flex justify-center space-x-4">
+          <a 
+            href="mailto:anuvind.pramod@students.iiserpune.ac.in" 
+            className="hover:text-blue-200 transition"
+          >
+            anuvind.pramod@students.iiserpune.ac.in
+          </a>
         </div>
-    </section>
+      </header>
 
-    <section>
-        <h2>Achievements</h2>
-        <ul>
-            <li>Wet Lab Head for Gene Knockouts and Head of Measurements for the iGEM team at IISER Pune. The team secured the Best Education Award was nominated for Best Climate Crisis Project, and clinched a spot among the <strong> top 10 undergraduate teams globally</strong> at iGEM Jamboree in Paris,2023 </li>
-            <li>Represented IISER Pune as a <strong> delegate at the G-20 event Accessible Science</strong> on June 16, 2023</li>
-        </ul>
-    </section>
+      {/* Profile */}
+      <section className="max-w-4xl mx-auto bg-white shadow-md my-8 p-8 rounded-lg">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <span className="mr-3 text-blue-600">🌐</span> Profile
+        </h2>
+        <p>
+          I am pursuing a 5-year BS-MS dual degree in Science, focusing on Biology and Data Science. 
+          My passion lies in integrating computational or data science approaches with cancer research 
+          and targeted therapy. I am currently building practical expertise in machine learning, 
+          deep learning, and computer vision while being proficient in multiplex image analysis using 
+          AI-ML based softwares and advanced genomics techniques like single-cell RNA sequencing analysis. 
+          These are complemented by a strong foundation in molecular biology techniques and bioinformatics. 
+          My goal is to leverage computational studies to advance cancer research.
+        </p>
+      </section>
 
-    <section>
-        <h2>Extra-curricular Activities</h2>
-        <ul>
-            <li>Athletics Captain, Sports Club, IISER Pune (September 2024 — January 2025)</li>
-            <li>Head of Media, Student Media Body, IISER Pune (November 2022 — December 2023)<br><em>Provided videography and photography services for various university events.</li>
-        </ul>
-    </section>
+      {/* Education */}
+      <section className="max-w-4xl mx-auto bg-white shadow-md my-8 p-8 rounded-lg">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <span className="mr-3 text-blue-600">🎓</span> Education
+        </h2>
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-bold">BS-MS (Dual Degree), Indian Institute of Science Education and Research (IISER), Pune</h3>
+            <p className="text-gray-600">December 2021 — Present</p>
+          </div>
+          <div>
+            <h3 className="font-bold">12th Grade, St. Antony's Public School, Kottayam</h3>
+            <p className="text-gray-600">April 2018 — January 2020 | Graduated with Distinction (92.1%)</p>
+          </div>
+          <div>
+            <h3 className="font-bold">10th Grade, Chinmaya Vidyalaya, Kannur</h3>
+            <p className="text-gray-600">April 2018 | Graduated with Distinction (93%)</p>
+          </div>
+          <div>
+            <h3 className="font-bold">Exam Scores</h3>
+            <ul>
+              <li>IAT: All India Rank - 329 (General), 29 (Category)</li>
+              <li>JEE MAINS: 96 percentile</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-    <section>
-        <h2>Essential Links</h2>
-        <ul class="essential-links">
-            <li><a href="https://2023.igem.wiki/iiser-pune-india/attributions">iGEM Project Wiki</a></li>
-            <li><a href="https://github.com/anuvindpramod">Github Repository</a></li>
-        </ul>
-    </section> 
+      {/* Research Experience */}
+      <section className="max-w-4xl mx-auto bg-white shadow-md my-8 p-8 rounded-lg">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <span className="mr-3 text-blue-600">💼</span> Research Experience
+        </h2>
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-bold">Convolutional Neural Network (CNN) Model Development</h3>
+            <p className="text-gray-600">IISER Pune | February 2025 — Present</p>
+            <p>Building and fine-tuning CNN models in PyTorch to bridge the gap between theoretical knowledge and practical application. Focused on gaining hands-on experience in model training, fine-tuning, and dataset handling, with a specific emphasis on biomedical image classification.</p>
+          </div>
+          <div>
+            <h3 className="font-bold">Single Cell RNA seq Analysis</h3>
+            <p className="text-gray-600">Intern Researcher, Tumor Microenvironment Lab and Leelavati Lab, IISER Pune | August 2024 — January 2025</p>
+            <p>Studied the co-expression patterns of YAP and TAZ in breast cancer cells and normal mammary epithelial cells by single-cell RNA sequence data analysis using Python. Investigated their level of functional redundancy and unique roles. Developed a single cell analysis pipeline for the lab from scratch.</p>
+          </div>
+          <div>
+            <h3 className="font-bold">Multiplex Immunofluorescence Image Analysis</h3>
+            <p className="text-gray-600">Intern Researcher, Tumor Microenvironment Lab, IISER Pune | January 2024 — August 2024</p>
+            <p>Studied the expression pattern of THBS1 in different cell types of patient tumor samples using PanCK and CD3 as cell type markers. Performed multiplex image analysis using Halo and inForm software.</p>
+          </div>
+          <div>
+            <h3 className="font-bold">iGEM Project: Sustainable Aviation Fuel Production</h3>
+            <p className="text-gray-600">Head of Wet Lab and Measurements | February 2023 — November 2023</p>
+            <p>Led the Wet Lab team focusing on gene knockouts and served as measurements head. Responsible for designing and planning daily experiments and involved in getting the final proof of concept. Conducted computation-based studies and designed optimal production conditions using statistical learning and Design of Experiments (DoE).</p>
+          </div>
+        </div>
+      </section>
 
-    <section>
-        <h2>References</h2>
-        <ul>
-            <li>Dr. Madhura Kulkarni (Senior Scientist), PCCM, IISER Pune: <a href="mailto:madhura.kulkarni@prashanticancercare.org">madhura.kulkarni@prashanticancercare.org</a></li>
-            <li>Dr. Leelavati Narlikar (Associate Professor and Deputy Chair, Data Science), IISER Pune: <a href="mailto:leelavati@iiserpune.ac.in">leelavati@iiserpune.ac.in</a></li>
-            <li>Dr. Mehmet Berkmen (Senior Scientist), New England Biolabs: <a href="berkmen@neb.com">berkmen@neb.com</a></li>
-            <li>Dr. Mridula Nambiar (Assistant Professor), IISER Pune: <a href="mailto:mridula@iiserpune.ac.in">mridula@iiserpune.ac.in</a></li>
+      {/* Skills */}
+      <section className="max-w-4xl mx-auto bg-white shadow-md my-8 p-8 rounded-lg">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <span className="mr-3 text-blue-600">💻</span> Skills
+        </h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <h3 className="font-bold mb-2">Computational Skills</h3>
+            <ul className="list-disc pl-5">
+              <li>Machine Learning (Python-PyTorch, Scikit-learn)</li>
+              <li>Single-cell RNA seq Analysis (Scanpy)</li>
+              <li>Deep Learning</li>
+              <li>Statistical Learning</li>
+              <li>Computer Vision</li>
+              <li>Multiplex Image Analysis (Halo, inForm)</li>
+              <li>Protein Visualization (Chimera, PyMOL)</li>
+              <li>Molecular Docking (AutoDock)</li>
+              <li>Primer Design (SnapGene, Benchling)</li>
+              <li>Design of Experiments (JMP)</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold mb-2">Molecular Techniques</h3>
+            <ul className="list-disc pl-5">
+              <li>Molecular Cloning Techniques</li>
+              <li>Immunohistochemistry</li>
+              <li>Multiplex Immunofluorescence</li>
+              <li>Confocal/Epifluorescence Microscopy</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Achievements */}
+      <section className="max-w-4xl mx-auto bg-white shadow-md my-8 p-8 rounded-lg">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <span className="mr-3 text-blue-600">🏆</span> Achievements
+        </h2>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>
+            Wet Lab Head for Gene Knockouts and Head of Measurements for the iGEM team at IISER Pune. 
+            The team secured the Best Education Award, was nominated for Best Climate Crisis Project, 
+            and clinched a spot among the top 10 undergraduate teams globally at iGEM Jamboree in Paris, 2023
+          </li>
+          <li>
+            Represented IISER Pune as a delegate at the G-20 event Accessible Science on June 16, 2023
+          </li>
         </ul>
-    </section>
-</body>
-</html>
+      </section>
+
+      {/* Extra-curricular Activities */}
+      <section className="max-w-4xl mx-auto bg-white shadow-md my-8 p-8 rounded-lg">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <span className="mr-3 text-blue-600">🏃</span> Extra-curricular Activities
+        </h2>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>
+            Athletics Captain, Sports Club, IISER Pune (September 2024 — January 2025)
+          </li>
+          <li>
+            Head of Media, Student Media Body, IISER Pune (November 2022 — December 2023)
+            <ul className="list-circle pl-5">
+              <li>Provided videography and photography services for various university events</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      {/* References */}
+      <section className="max-w-4xl mx-auto bg-white shadow-md my-8 p-8 rounded-lg">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <span className="mr-3 text-blue-600">📞</span> References
+        </h2>
+        <ul className="space-y-2">
+          <li>
+            <strong>Dr. Madhura Kulkarni</strong> (Senior Scientist), PCCM, IISER Pune
+            <br />
+            <a href="mailto:madhura.kulkarni@prashanticancercare.org" className="text-blue-600">
+              madhura.kulkarni@prashanticancercare.org
+            </a>
+          </li>
+          <li>
+            <strong>Dr. Leelavati Narlikar</strong> (Associate Professor and Deputy Chair, Data Science), IISER Pune
+            <br />
+            <a href="mailto:leelavati@iiserpune.ac.in" className="text-blue-600">
+              leelavati@iiserpune.ac.in
+            </a>
+          </li>
+          <li>
+            <strong>Dr. Mehmet Berkmen</strong> (Senior Scientist), New England Biolabs
+            <br />
+            <a href="mailto:berkmen@neb.com" className="text-blue-600">
+              berkmen@neb.com
+            </a>
+          </li>
+          <li>
+            <strong>Dr. Mridula Nambiar</strong> (Assistant Professor), IISER Pune
+            <br />
+            <a href="mailto:mridula@iiserpune.ac.in" className="text-blue-600">
+              mridula@iiserpune.ac.in
+            </a>
+            <br />
+            Phone: +91-20-25908229
+          </li>
+        </ul>
+      </section>
+
+      {/* Essential Links */}
+      <section className="max-w-4xl mx-auto bg-white shadow-md my-8 p-8 rounded-lg">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center">
+          <span className="mr-3 text-blue-600">🔗</span> Essential Links
+        </h2>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>
+            <a href="#" className="text-blue-600">iGEM Project Wiki</a>
+          </li>
+          <li>
+            <a href="#" className="text-blue-600">Github Repository</a>
+          </li>
+        </ul>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-6 text-center">
+        <p>© 2025 Anuvind Pramod | All Rights Reserved</p>
+      </footer>
+    </div>
+  );
+};
+
+export default PersonalWebsite;
