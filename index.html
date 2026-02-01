@@ -103,7 +103,7 @@
             margin-top: 2rem;
         }
 
-        .contact-links a {
+        .contact-links a, .contact-links button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -120,12 +120,37 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            cursor: pointer;
         }
 
-        .contact-links a:hover {
+        .contact-links a:hover, .contact-links button:hover {
             background: rgba(255,255,255,0.25);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-dark);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Main Content */
@@ -437,6 +462,12 @@
             .references-grid {
                 grid-template-columns: 1fr;
             }
+
+            .toast {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+            }
         }
 
         /* Smooth scroll */
@@ -452,18 +483,21 @@
             <p class="subtitle">Master's Thesis Fellow | Jug Lab, Human Technopole, Milan</p>
             <p class="institution">Indian Institute of Science Education and Research (IISER), Pune</p>
             <div class="contact-links">
-                <a href="mailto:anuvind.pramod@visitors.fht.org">
+                <button onclick="copyEmail('anuvind.pramod@visitors.fht.org')" title="Click to copy email">
                     <span>✉</span> Email (HT)
-                </a>
-                <a href="mailto:anuvind.pramod@students.iiserpune.ac.in">
+                </button>
+                <button onclick="copyEmail('anuvind.pramod@students.iiserpune.ac.in')" title="Click to copy email">
                     <span>✉</span> Email (IISER)
-                </a>
+                </button>
                 <a href="https://github.com/anuvindpramod" target="_blank" rel="noopener noreferrer">
                     <span>⚡</span> GitHub
                 </a>
             </div>
         </div>
     </header>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast"></div>
 
     <main>
         <section>
@@ -664,8 +698,38 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Anuvind Pramod. All rights reserved.</p>
-        <p>Built with semantic HTML & custom CSS </p>
+        <p>&copy; 2025 Anuvind Pramod. All rights reserved.</p>
+        <p>Built with semantic HTML & custom CSS</p>
     </footer>
+
+    <script>
+        function copyEmail(email) {
+            // Try using the Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(function() {
+                    showToast('Email copied: ' + email);
+                }).catch(function() {
+                    // Fallback to opening email client
+                    window.location.href = 'mailto:' + email;
+                    showToast('Opening email client...');
+                });
+            } else {
+                // Fallback for older browsers - open email client
+                window.location.href = 'mailto:' + email;
+                showToast('Opening email client...');
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
+              
