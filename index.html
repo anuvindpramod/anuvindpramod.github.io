@@ -4,211 +4,668 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anuvind Pramod - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Apply Inter font globally */
+        :root {
+            --primary: #1a5f7a;
+            --primary-light: #2a7f9a;
+            --primary-dark: #0a3f5a;
+            --accent: #f97316;
+            --accent-light: #fb923c;
+            --bg-dark: #0f172a;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Crimson Pro', serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-        /* Simple smooth scroll */
-        html {
-            scroll-behavior: smooth;
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        /* Add some subtle animation */
-        .section-fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease-out forwards;
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255,255,255,0.03) 10px,
+                    rgba(255,255,255,0.03) 20px
+                );
+            pointer-events: none;
         }
-        @keyframes fadeIn {
+
+        header .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            opacity: 0.95;
+        }
+
+        .institution {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.3rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1100px;
+            margin: -2rem auto 0;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.6s ease-out backwards;
+            border-left: 4px solid var(--primary);
+        }
+
+        section:nth-child(even) {
+            border-left-color: var(--accent);
+        }
+
+        h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(1.6rem, 3vw, 2rem);
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Research Interests Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            font-family: 'IBM Plex Mono', monospace;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 8px rgba(26, 95, 122, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .thesis-highlight {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0.3rem 0;
+        }
+
+        /* Research Projects */
+        .project {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-left: 4px solid;
+            border-radius: 8px;
+            background: linear-gradient(to right, rgba(26, 95, 122, 0.03), transparent);
+            transition: all 0.3s ease;
+        }
+
+        .project:hover {
+            background: linear-gradient(to right, rgba(26, 95, 122, 0.06), transparent);
+            transform: translateX(4px);
+        }
+
+        .project:nth-child(1) { border-left-color: #6366f1; }
+        .project:nth-child(2) { border-left-color: #3b82f6; }
+        .project:nth-child(3) { border-left-color: #8b5cf6; }
+        .project:nth-child(4) { border-left-color: #ec4899; }
+        .project:nth-child(5) { border-left-color: #10b981; }
+
+        .project ul {
+            margin-top: 0.75rem;
+            padding-left: 1.5rem;
+        }
+
+        .project li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .skill-category li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Coursework */
+        .coursework-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .course-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .course-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Presentation Highlight */
+        .presentation-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .presentation-box p:first-child {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Awards */
+        .awards-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .awards-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .awards-list li:last-child {
+            border-bottom: none;
+        }
+
+        .awards-list li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.5rem;
+            top: 0.8rem;
+        }
+
+        /* References Grid */
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .reference-card {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 3px solid var(--primary);
+        }
+
+        .reference-card p:first-child {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .reference-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .reference-card a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        footer p:last-child {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        /* Apply animation with delay to sections */
-        section {
-            animation-delay: 0.2s; /* Adjust delay as needed */
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 1.5rem;
+            }
+
+            .skills-grid,
+            .references-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-
-    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-8 md:p-16 shadow-lg rounded-b-lg">
-        <div class="container mx-auto max-w-4xl text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-2">Anuvind Pramod</h1>
-            <p class="text-xl md:text-2xl font-light mb-4">4th Year BS-MS Student | Biology & Data Science</p>
-            <p class="text-lg text-indigo-100">Indian Institute of Science Education and Research (IISER), Pune</p>
-            <div class="mt-6 flex justify-center items-center space-x-4">
-                 <a href="mailto:anuvind.pramod@students.iiserpune.ac.in" class="inline-flex items-center bg-white text-indigo-600 hover:bg-indigo-50 transition duration-300 px-4 py-2 rounded-full shadow text-sm font-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    Email Me
+<body>
+    <header>
+        <div class="container">
+            <h1>Anuvind Pramod</h1>
+            <p class="subtitle">Master's Thesis Fellow | Jug Lab, Human Technopole, Milan</p>
+            <p class="institution">Indian Institute of Science Education and Research (IISER), Pune</p>
+            <div class="contact-links">
+                <a href="mailto:anuvind.pramod@visitors.fht.org">
+                    <span>✉</span> Email (HT)
                 </a>
-                 <a href="https://github.com/anuvindpramod" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-gray-800 text-white hover:bg-gray-700 transition duration-300 px-4 py-2 rounded-full shadow text-sm font-medium">
-                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 16 16">
-                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                     </svg>
-                     GitHub
-                 </a>
-                 <a href="https://2023.igem.wiki/iiser-pune-india/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-yellow-500 text-white hover:bg-yellow-400 transition duration-300 px-4 py-2 rounded-full shadow text-sm font-medium">
-                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.242a2 2 0 00-1.846.876l-1.42 2.84a1 1 0 00.028 1.011l1.42 2.84a2 2 0 003.542-.35l.662-1.323a3 3 0 013.296-1.354l.318.158a3 3 0 013.296 1.354l.662 1.323a2 2 0 003.542.35l1.42-2.84a1 1 0 00.028-1.011l-1.42-2.84a2 2 0 00-1.846-.876z" />
-                     </svg>
-                     iGEM Project
-                 </a>
+                <a href="mailto:anuvind.pramod@students.iiserpune.ac.in">
+                    <span>✉</span> Email (IISER)
+                </a>
+                <a href="https://github.com/anuvindpramod" target="_blank" rel="noopener noreferrer">
+                    <span>⚡</span> GitHub
+                </a>
             </div>
         </div>
     </header>
 
-    <main class="container mx-auto max-w-4xl p-6 md:p-8">
-
-        <section id="profile" class="mb-12 bg-white p-6 rounded-lg shadow-md section-fade-in">
-            <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 border-b-2 border-indigo-200 pb-2 mb-4">Profile</h2>
-            <p class="text-gray-600 leading-relaxed">
-                A dedicated BS-MS student specializing in Biology and Data Science. Passionate about applying computational and data science techniques to cancer research and targeted therapies. Currently developing expertise in machine learning, deep learning, computer vision, multiplex image analysis (using AI/ML software), and single-cell RNA sequencing analysis. Possesses a strong background in molecular biology methods and bioinformatics. Aiming to utilize computational studies to drive advancements in cancer research.
-            </p>
-        </section>
-
-        <section id="education" class="mb-12 bg-white p-6 rounded-lg shadow-md section-fade-in">
-            <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 border-b-2 border-indigo-200 pb-2 mb-4">Education</h2>
-            <div class="space-y-4">
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-700">BS-MS (Dual Degree)</h3>
-                    <p class="text-gray-600">Indian Institute of Science Education and Research (IISER), Pune</p>
-                    <p class="text-sm text-gray-500">December 2021 – Present</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-700">12th Grade</h3>
-                    <p class="text-gray-600">St. Antony's Public School, Kottayam</p>
-                    <p class="text-sm text-gray-500">April 2018 – January 2020 | Graduated with distinction (92.1%)</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-700">10th Grade</h3>
-                    <p class="text-gray-600">Chinmaya Vidyalaya, Kannur</p>
-                    <p class="text-sm text-gray-500">Graduated April 2018 | Graduated with distinction (93%)</p>
-                </div>
+    <main>
+        <section>
+            <h2>Research Interests</h2>
+            <div class="tags">
+                <span class="tag">AI in Medicine</span>
+                <span class="tag">Deep Learning for Medical Imaging</span>
+                <span class="tag">Computer-Aided Diagnosis</span>
+                <span class="tag">Vision Transformers (ViT)</span>
+                <span class="tag">Multi-modal Learning in Healthcare</span>
+                <span class="tag">Interpretable AI for Clinical Decision Support</span>
             </div>
         </section>
 
-        <section id="research" class="mb-12 bg-white p-6 rounded-lg shadow-md section-fade-in">
-            <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 border-b-2 border-indigo-200 pb-2 mb-6">Research Experience</h2>
-            <div class="space-y-6">
-                <article>
-                    <h3 class="text-lg font-semibold text-indigo-700 mb-1">CNN Models for Breast Mammogram Classification</h3>
-                    <p class="text-sm text-gray-500 mb-2">IISER Pune | February 2025 – Present</p>
-                    <p class="text-gray-600 leading-relaxed">
-                        Implemented and fine-tuned CNN architectures (ResNet-50, DenseNet) in PyTorch. Utilized transfer learning, data augmentation, and techniques for class imbalance (focal loss, weighted cross-entropy). Preprocessed and analyzed large datasets like CBIS-DDSM and MNIST.
-                    </p>
-                </article>
-                 <article>
-                    <h3 class="text-lg font-semibold text-indigo-700 mb-1">Single Cell RNA-seq Analysis of YAP/TAZ in Breast Cancer</h3>
-                    <p class="text-sm text-gray-500 mb-2">Intern Researcher, Tumor Microenvironment Lab & Leelavati Lab, IISER Pune | August 2024 – January 2025</p>
-                    <p class="text-gray-600 leading-relaxed">
-                        Analyzed single-cell RNA sequence data using Python to study YAP/TAZ co-expression patterns in breast cancer cells vs. normal mammary epithelial cells. Investigated functional redundancy and unique roles; developed a single-cell analysis pipeline for the lab.
-                    </p>
-                </article>
-                 <article>
-                    <h3 class="text-lg font-semibold text-indigo-700 mb-1">Image Analysis of THBS1 Expression in Breast Cancer Samples</h3>
-                    <p class="text-sm text-gray-500 mb-2">Intern Researcher, Tumor Microenvironment Lab, IISER Pune | January 2024 – August 2024</p>
-                    <p class="text-gray-600 leading-relaxed">
-                        Studied THBS1 expression patterns in patient tumor samples using multiplex immunofluorescence (Multiplex-IF) with PanCK and CD3 markers. Performed multiplex image analysis using Halo and inForm software.
-                    </p>
-                </article>
-                 <article>
-                    <h3 class="text-lg font-semibold text-indigo-700 mb-1">Sustainable Aviation Fuel from Jatropha Curcas Oil (iGEM 2023)</h3>
-                    <p class="text-sm text-gray-500 mb-2">Head of Wet Lab & Measurements, iGEM IISER Pune 2023 | February 2023 – November 2023</p>
-                    <p class="text-gray-600 leading-relaxed">
-                        Led the Wet Lab team (focusing on gene knockouts) and served as Measurements Head. Designed and planned daily experiments, contributed significantly to the proof of concept. Involved in computation-based studies, designing optimal production conditions using statistical learning and Design of Experiments (DoE). Team secured Best Education Award, was nominated for Best Climate Crisis Project, and achieved a top-10 global rank (undergrad).
-                    </p>
-                </article>
+        <section>
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>BS-MS Dual Degree (Inter-Disciplinary)</h3>
+                <p>Indian Institute of Science Education and Research (IISER), Pune, India</p>
+                <p class="meta">December 2021 – May 2026 (Expected)</p>
+                <p style="margin-top: 0.5rem; font-style: italic;">Master's Thesis in Data Science: Deep Learning for Breast Cancer Risk Prediction from Mammography</p>
+            </div>
+            <div class="thesis-highlight">
+                <h3>Master's Thesis</h3>
+                <p>Jug Lab, Human Technopole, Milan, Italy</p>
+                <p class="meta">June 2025 – Present</p>
+                <p style="margin-top: 0.5rem;">Advisor: Dr. Florian Jug</p>
             </div>
         </section>
 
-        <section id="skills" class="mb-12 bg-white p-6 rounded-lg shadow-md section-fade-in">
-            <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 border-b-2 border-indigo-200 pb-2 mb-4">Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-600 mb-2">Computational Skills</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Machine Learning (Python - Pytorch, Scikit-learn)</li>
-                        <li>Deep Learning</li>
-                        <li>Computer Vision</li>
-                        <li>Single-cell RNA seq Analysis (Scanpy)</li>
-                        <li>Statistical Learning</li>
-                        <li>Multiplex Image Analysis (Halo, inForm)</li>
-                        <li>Protein Visualization (Chimera, PyMOL)</li>
+        <section>
+            <h2>Research Experience</h2>
+            
+            <div class="project">
+                <h3>Biological Age Estimation from Mammography for Breast Cancer Risk Stratification</h3>
+                <p class="meta">Master's Thesis, Jug Lab, Human Technopole, Milan | July 2025 – Present</p>
+                <ul>
+                    <li>Developed an end-to-end deep learning framework for predicting biological age from screening mammograms, achieving MAE of 3.2 years—a 60% improvement over previous state-of-the-art methods.</li>
+                    <li>Designed a novel architecture combining distilled DINOv3 backbones with hierarchical multi-head attention mechanisms for robust feature extraction.</li>
+                    <li>Investigating the clinical utility of "age gap" (biological vs. chronological age) as a novel imaging biomarker for personalized breast cancer risk assessment.</li>
+                    <li>Trained models on large-scale multi-institutional mammography datasets on HPC infrastructure.</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <h3>Deep CNN Architecture for Histopathology Image Classification</h3>
+                <p class="meta">Course Project: Medical Image Analysis, IISER Pune | February 2025 – April 2025</p>
+                <ul>
+                    <li>Designed a custom deep CNN with stacked convolutional blocks, batch normalization, and progressive dropout for multi-class lung and colon cancer classification.</li>
+                    <li>Achieved near-perfect performance with 99.58% test accuracy and 0.9999 AUC on the LC25000 benchmark, validating the custom architecture against standard ResNet baselines.</li>
+                    <li>Conducted ablation studies to analyze the contribution of architectural components to model performance.</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <h3>Single-Cell Transcriptomic Analysis of YAP/TAZ in Breast Cancer</h3>
+                <p class="meta">Tumor Microenvironment Lab & Leelavati Lab, IISER Pune | August 2024 – January 2025</p>
+                <ul>
+                    <li>Developed a reproducible Python-based scRNA-seq analysis pipeline using Scanpy for the laboratory.</li>
+                    <li>Investigated co-expression patterns and functional redundancy of YAP and TAZ transcriptional co-activators in breast cancer cells versus normal mammary epithelial cells.</li>
+                    <li>Applied dimensionality reduction, clustering, and differential expression analysis to characterize cell-type-specific transcriptional programs.</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <h3>Spatial Protein Expression Analysis in Breast Tumor Microenvironment</h3>
+                <p class="meta">Tumor Microenvironment Lab, IISER Pune | January 2024 – August 2024</p>
+                <ul>
+                    <li>Analyzed THBS1 expression patterns across tumor cell types using multiplex immunofluorescence imaging with PanCK and CD3 cell-type markers.</li>
+                    <li>Performed quantitative image analysis using Halo and inForm software to characterize spatial relationships in the tumor microenvironment.</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <h3>Computational Optimization for Sustainable Aviation Fuel Production</h3>
+                <p class="meta">iGEM IISER Pune 2023 | February 2023 – November 2023</p>
+                <ul>
+                    <li>Headed Measurements division (statistical modeling) and the Wet Lab team (gene knockouts).</li>
+                    <li>Designed optimal production conditions using Design of Experiments (DoE) and statistical learning approaches.</li>
+                    <li>Team achieved: Best Education Award, nomination for Best Climate Crisis Project, and Top-10 global ranking among undergraduate teams at iGEM Jamboree, Paris.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Machine Learning & AI</h3>
+                    <ul>
+                        <li>PyTorch, scikit-learn</li>
+                        <li>Vision Transformers (ViT, DINOv3, Swin)</li>
+                        <li>CNNs, Attention Mechanisms</li>
+                        <li>Transfer Learning, Fine-tuning</li>
+                        <li>Model Interpretability (GradCAM, SHAP)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming & Computing</h3>
+                    <ul>
+                        <li>Python, C++, Bash scripting</li>
+                        <li>HPC/SLURM, Distributed Training</li>
+                        <li>Git, Linux</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Medical Image Analysis</h3>
+                    <ul>
+                        <li>Mammography, Histopathology</li>
+                        <li>Multiplex IF (Halo, inForm)</li>
+                        <li>DICOM handling, Image preprocessing</li>
+                        <li>Whole-slide image analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Bioinformatics & Data Science</h3>
+                    <ul>
+                        <li>Single-cell RNA-seq (Scanpy, Seurat)</li>
+                        <li>Statistical Modeling, DoE</li>
+                        <li>Data Visualization (Matplotlib, Seaborn)</li>
                         <li>Molecular Docking (AutoDock)</li>
-                        <li>Primer Design (SnapGene, Benchling)</li>
-                        <li>Design of Experiments (JMP)</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-600 mb-2">Molecular Techniques</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li>Molecular Cloning Techniques</li>
-                        <li>Immunohistochemistry</li>
-                        <li>Multiplex Immunofluorescence</li>
-                        <li>Confocal/Epifluorescence Microscopy</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="achievements" class="mb-12 bg-white p-6 rounded-lg shadow-md section-fade-in">
-            <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 border-b-2 border-indigo-200 pb-2 mb-4">Achievements & Recognition</h2>
-            <ul class="list-disc list-inside text-gray-600 space-y-2">
-                <li>Led Wet Lab (Gene Knockouts) & Measurements for iGEM IISER Pune 2023 team.</li>
-                <li>iGEM Team Achievements (Paris, 2023): Best Education Award, Nomination for Best Climate Crisis Project, Top 10 Global Rank (Undergraduate).</li>
-                <li>Represented IISER Pune as a delegate at the G-20 event 'Accessible Science' (June 16, 2023).</li>
-                <li>Exam Scores: IAT (AIR 329 General, 29 Category), JEE MAINS (96 percentile).</li>
+        <section>
+            <h2>Relevant Coursework</h2>
+            <div class="coursework-list">
+                <span class="course-tag">Machine Learning</span>
+                <span class="course-tag">Deep Learning</span>
+                <span class="course-tag">Computer Vision</span>
+                <span class="course-tag">Statistical Inference</span>
+                <span class="course-tag">Linear Algebra</span>
+                <span class="course-tag">Bayesian Approaches</span>
+                <span class="course-tag">Computational Biology</span>
+                <span class="course-tag">Cancer Biology</span>
+                <span class="course-tag">Molecular Cell Biology</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Selected Presentations</h2>
+            <div class="presentation-box">
+                <p>Poster: "Deep Learning-Based Mammographic Age Estimation: Towards an Image-Based Biomarker for Cancer Risk Prediction"</p>
+                <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 0.3rem;">Cancer Research UK Data-Driven Cancer Research Conference</p>
+                <p style="font-size: 0.9rem; color: var(--text-light);">Edinburgh International Conference Centre, UK | February 24–26, 2026 (Accepted)</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Honors & Awards</h2>
+            <ul class="awards-list">
+                <li><strong>Best Education Award and Top-10 Global Undergraduate Ranking</strong>, iGEM Jamboree, Paris (2023)</li>
+                <li><strong>Nominated for Best Climate Crisis Project</strong>, iGEM Jamboree, Paris (2023)</li>
+                <li><strong>G-20 Delegate</strong>, "Accessible Science" event, representing IISER Pune (June 2023)</li>
+                <li><strong>Graduated with Distinction</strong>, 12th Grade (92.1%) - 2020</li>
             </ul>
         </section>
 
-         <section id="extracurricular" class="mb-12 bg-white p-6 rounded-lg shadow-md section-fade-in">
-            <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 border-b-2 border-indigo-200 pb-2 mb-4">Extra-curricular Activities</h2>
-            <ul class="list-disc list-inside text-gray-600 space-y-2">
-                <li>Athletics Captain, Sports Club, IISER Pune (September 2024 – January 2025).</li>
-                <li>Head of Media, Student Media Body, IISER Pune (November 2022 – December 2023) - Provided videography and photography services for university events.</li>
+        <section>
+            <h2>Leadership & Service</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);"><strong>Athletics Captain</strong>, Sports Club, IISER Pune (September 2024 – January 2025)</li>
+                <li style="padding: 0.75rem 0;"><strong>Head of Media</strong>, Student Media Body, IISER Pune (November 2022 – December 2023)</li>
             </ul>
         </section>
 
-        <section id="references" class="mb-12 bg-white p-6 rounded-lg shadow-md section-fade-in">
-             <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 border-b-2 border-indigo-200 pb-2 mb-4">References</h2>
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                 <div>
-                     <p class="font-medium text-gray-700">Dr. Madhura Kulkarni</p>
-                     <p class="text-gray-600">Senior Scientist, PCCM, IISER Pune</p>
-                     <a href="mailto:madhura.kulkarni@prashanticancercare.org" class="text-indigo-600 hover:underline">madhura.kulkarni@prashanticancercare.org</a>
-                 </div>
-                 <div>
-                     <p class="font-medium text-gray-700">Dr. Leelavati Narlikar</p>
-                     <p class="text-gray-600">Associate Professor & Deputy Chair, Data Science, IISER Pune</p>
-                     <a href="mailto:leelavati@iiserpune.ac.in" class="text-indigo-600 hover:underline">leelavati@iiserpune.ac.in</a>
-                 </div>
-                 <div>
-                     <p class="font-medium text-gray-700">Dr. Mehmet Berkmen</p>
-                     <p class="text-gray-600">Senior Scientist, New England Biolabs</p>
-                     <a href="mailto:berkmen@neb.com" class="text-indigo-600 hover:underline">berkmen@neb.com</a>
-                 </div>
-                 <div>
-                     <p class="font-medium text-gray-700">Dr. Mridula Nambiar</p>
-                     <p class="text-gray-600">Assistant Professor, IISER Pune</p>
-                     <p class="text-gray-600"><a href="mailto:mridula@iiserpune.ac.in" class="text-indigo-600 hover:underline">mridula@iiserpune.ac.in</a> | +91-20-25908229</p>
-                 </div>
-             </div>
-         </section>
-
+        <section>
+            <h2>References</h2>
+            <div class="references-grid">
+                <div class="reference-card">
+                    <p>Dr. Florian Jug</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin: 0.2rem 0;">Head, Computational Biology Research Centre</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Human Technopole, Milan</p>
+                    <a href="mailto:florian.jug@fht.org">florian.jug@fht.org</a>
+                </div>
+                <div class="reference-card">
+                    <p>Dr. Madhura Kulkarni</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin: 0.2rem 0;">Senior Scientist, PCCM</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">IISER Pune</p>
+                    <a href="mailto:madhura.kulkarni@iiserpune.ac.in">madhura.kulkarni@iiserpune.ac.in</a>
+                </div>
+                <div class="reference-card">
+                    <p>Dr. Ruggiero Santeramo</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin: 0.2rem 0;">Postdoctoral Researcher (ML Specialist)</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Jug Lab, Human Technopole, Milan</p>
+                    <a href="mailto:ruggiero.santeramo@fht.org">ruggiero.santeramo@fht.org</a>
+                </div>
+                <div class="reference-card">
+                    <p>Dr. Leelavati Narlikar</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin: 0.2rem 0;">Assoc. Professor & Deputy Chair, Data Science</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">IISER Pune</p>
+                    <a href="mailto:leelavati@iiserpune.ac.in">leelavati@iiserpune.ac.in</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 text-center p-6 mt-12 rounded-t-lg">
-        <p>&copy; 2025 Anuvind Pramod. All rights reserved.</p>
-        <p class="text-sm text-gray-400 mt-1">Built with HTML & Tailwind CSS</p>
+    <footer>
+        <p>&copy; 2026 Anuvind Pramod. All rights reserved.</p>
+        <p>Built with semantic HTML & custom CSS </p>
     </footer>
-
 </body>
 </html>
