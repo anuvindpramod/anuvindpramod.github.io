@@ -167,7 +167,7 @@
         section {
             padding: 3.5rem 0;
             border-bottom: 1px solid var(--border-subtle);
-            scroll-margin-top: 72px; /* offset for sticky nav */
+            scroll-margin-top: 64px; /* offset for sticky nav */
         }
         section:last-of-type { border-bottom: none; }
 
@@ -251,6 +251,8 @@
         }
         .entry-body { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.72; }
         .entry-body strong { color: var(--text); font-weight: 600; }
+        .entry.minor .entry-title { font-weight: 500; color: var(--text-secondary); }
+        .entry.minor .entry-body  { font-size: 0.85rem; }
 
         /* ── Publications ── */
         .pub-badge {
@@ -387,7 +389,7 @@
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#blog">Blog</a></li>
-                <li><a href="Anuvind_Pramod_CV%20(5).pdf" class="cv-btn" target="_blank" rel="noopener">CV ↗</a></li>
+                <li><a href="anuvind-pramod-cv.pdf" class="cv-btn" target="_blank" rel="noopener">CV ↗</a></li>
             </ul>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -400,7 +402,7 @@
         <section id="about">
             <div class="about-grid">
                 <div class="profile-photo">
-                    <img src="photo.jpg" alt="Anuvind Pramod">
+                    <img src="photo.jpg" alt="Anuvind Pramod" width="112" height="112" onerror="this.parentElement.innerHTML='AP'">
                 </div>
                 <div>
                     <h1>Anuvind Pramod</h1>
@@ -424,21 +426,21 @@
 
                     <p class="status-pill">
                         <span class="dot"></span>
-                        Open to PhD positions in AI for Medicine &amp; Medical Imaging &middot; Starting 2026
+                        Seeking PhD positions in computational oncology, imaging biomarkers &amp; clinical AI &middot; Starting 2026
                     </p>
 
                     <div class="links-row">
-                        <button onclick="copyEmail('anuvind.pramod@visitors.fht.org')" title="Click to copy">
+                        <button onclick="copyEmail('anuvind.pramod@visitors.fht.org')" title="Click to copy" aria-label="Copy HT email address to clipboard">
                             anuvind.pramod@visitors.fht.org
                         </button>
                         <span class="sep">/</span>
-                        <button onclick="copyEmail('anuvind.pramod@students.iiserpune.ac.in')" title="Click to copy">
+                        <button onclick="copyEmail('anuvind.pramod@students.iiserpune.ac.in')" title="Click to copy" aria-label="Copy IISER email address to clipboard">
                             IISER email
                         </button>
                         <span class="sep">/</span>
                         <a href="https://github.com/anuvindpramod" target="_blank" rel="noopener">GitHub</a>
                         <span class="sep">/</span>
-                        <a href="Anuvind_Pramod_CV%20(5).pdf" target="_blank" rel="noopener">CV (PDF)</a>
+                        <a href="anuvind-pramod-cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
                     </div>
                 </div>
             </div>
@@ -451,10 +453,10 @@
 
                 <div class="entry">
                     <p class="entry-meta">Master&rsquo;s Thesis &middot; Jug Lab, Human Technopole, Milan &middot; Jul 2025 &ndash; Present</p>
-                    <p class="entry-title">Biological Age Estimation from Mammography for Breast Cancer Risk Stratification</p>
+                    <p class="entry-title">Biological Age Estimation from Mammography for Breast Cancer Risk Stratification <a href="https://github.com/anuvindpramod" target="_blank" rel="noopener" style="font-size:0.8rem;font-weight:500;margin-left:0.4rem;">code ↗</a></p>
                     <p class="entry-body">
                         Building an end-to-end deep learning framework for predicting biological age from screening
-                        mammograms &mdash; achieving MAE of 3.2 years, a <strong>60% improvement over prior state-of-the-art</strong>.
+                        mammograms &mdash; achieving a MAE of 3.2 years, showing <strong>competitive performance against existing benchmarks</strong>.
                         The architecture combines distilled DINOv3 backbones with hierarchical multi-head attention.
                         Investigating <em>mammographic age gap</em> (biological &minus; chronological age) as a novel imaging
                         biomarker for personalized cancer risk assessment. Trained on large-scale multi-institutional
@@ -462,9 +464,9 @@
                     </p>
                 </div>
 
-                <div class="entry">
+                <div class="entry minor">
                     <p class="entry-meta">Course Project &middot; Medical Image Analysis, IISER Pune &middot; Feb &ndash; Apr 2025</p>
-                    <p class="entry-title">Deep CNN for Histopathology Image Classification</p>
+                    <p class="entry-title">Deep CNN for Histopathology Image Classification <a href="https://github.com/anuvindpramod" target="_blank" rel="noopener" style="font-size:0.8rem;font-weight:500;margin-left:0.4rem;">code ↗</a></p>
                     <p class="entry-body">
                         Designed a custom CNN with stacked convolutional blocks, batch normalization, and progressive
                         dropout for multi-class lung and colon cancer classification. Achieved
@@ -527,7 +529,7 @@
                 </div>
 
             </div>
-            <p class="more-note">Additional manuscripts in preparation.</p>
+            <p class="more-note">Manuscript on mammographic biological age estimation in preparation.</p>
         </section>
 
         <!-- ── Skills ── -->
@@ -609,7 +611,7 @@
         <div class="footer-links">
             <a href="https://github.com/anuvindpramod" target="_blank" rel="noopener">GitHub</a>
             <a href="mailto:anuvind.pramod@visitors.fht.org">Email</a>
-            <a href="Anuvind_Pramod_CV%20(5).pdf" target="_blank" rel="noopener">CV</a>
+            <a href="anuvind-pramod-cv.pdf" target="_blank" rel="noopener">CV</a>
         </div>
     </footer>
 
