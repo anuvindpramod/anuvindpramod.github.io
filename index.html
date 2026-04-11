@@ -261,13 +261,38 @@
         .more-note { margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-tertiary); font-style: italic; }
 
         /* ── Skills ── */
-        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem; }
-        .skill-cat-label {
-            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-            color: var(--text-tertiary); padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border); margin-bottom: 0.6rem;
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .skill-cat {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.1rem 1.2rem 1rem;
         }
-        .skill-cat p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.9; }
+        .skill-cat-label {
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+            color: var(--text-tertiary); margin-bottom: 0.875rem;
+            display: flex; align-items: center; gap: 0.45rem;
+        }
+        .skill-cat-label::before {
+            content: ''; display: block; width: 7px; height: 7px;
+            border-radius: 2px; flex-shrink: 0;
+        }
+        .skill-cat:nth-child(1) .skill-cat-label::before { background: #3b82f6; }
+        .skill-cat:nth-child(2) .skill-cat-label::before { background: #8b5cf6; }
+        .skill-cat:nth-child(3) .skill-cat-label::before { background: #0d9488; }
+        .skill-cat:nth-child(4) .skill-cat-label::before { background: #10b981; }
+
+        .skill-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+        .chip {
+            font-size: 0.8rem; font-weight: 400;
+            background: var(--bg); color: var(--text-secondary);
+            border: 1px solid var(--border); border-radius: 100px;
+            padding: 0.2rem 0.65rem; white-space: nowrap;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+            cursor: default;
+        }
+        .chip:hover { background: var(--accent-bg); color: var(--accent); border-color: var(--accent); }
 
         /* ── Blog ── */
         .blog-card {
@@ -333,7 +358,7 @@
             .about-grid     { grid-template-columns: 1fr; gap: 1.25rem; }
             .profile-photo  { width: 88px; height: 88px; font-size: 1.25rem; }
             h1              { font-size: 1.625rem; }
-            .skills-grid    { grid-template-columns: 1fr; gap: 1.75rem; }
+            .skills-grid    { grid-template-columns: 1fr; }
             footer          { flex-direction: column; align-items: flex-start; }
         }
     </style>
@@ -507,43 +532,58 @@
 
                 <div class="skill-cat">
                     <p class="skill-cat-label">Machine Learning &amp; AI</p>
-                    <p>
-                        PyTorch &middot; scikit-learn<br>
-                        Vision Transformers (ViT, DINOv3, Swin)<br>
-                        CNNs &middot; Attention Mechanisms<br>
-                        Transfer Learning &middot; Fine-tuning<br>
-                        Model Interpretability (GradCAM, SHAP)<br>
-                        Weights &amp; Biases (W&amp;B) &middot; TensorBoard
-                    </p>
+                    <div class="skill-chips">
+                        <span class="chip">PyTorch</span>
+                        <span class="chip">scikit-learn</span>
+                        <span class="chip">ViT / DINOv3 / Swin</span>
+                        <span class="chip">CNNs</span>
+                        <span class="chip">Attention Mechanisms</span>
+                        <span class="chip">Transfer Learning</span>
+                        <span class="chip">Fine-tuning</span>
+                        <span class="chip">GradCAM</span>
+                        <span class="chip">SHAP</span>
+                        <span class="chip">Weights &amp; Biases</span>
+                        <span class="chip">TensorBoard</span>
+                    </div>
                 </div>
 
                 <div class="skill-cat">
                     <p class="skill-cat-label">Programming &amp; Computing</p>
-                    <p>
-                        Python &middot; C++ &middot; Bash<br>
-                        HPC / SLURM &middot; Distributed Training<br>
-                        Git &middot; Linux
-                    </p>
+                    <div class="skill-chips">
+                        <span class="chip">Python</span>
+                        <span class="chip">C++</span>
+                        <span class="chip">Bash</span>
+                        <span class="chip">HPC / SLURM</span>
+                        <span class="chip">Distributed Training</span>
+                        <span class="chip">Git</span>
+                        <span class="chip">Linux</span>
+                    </div>
                 </div>
 
                 <div class="skill-cat">
                     <p class="skill-cat-label">Medical Image Analysis</p>
-                    <p>
-                        Mammography &middot; Histopathology<br>
-                        Multiplex Immunofluorescence (Halo, inForm)<br>
-                        DICOM handling &amp; preprocessing<br>
-                        Whole-slide image analysis
-                    </p>
+                    <div class="skill-chips">
+                        <span class="chip">Mammography</span>
+                        <span class="chip">Histopathology</span>
+                        <span class="chip">Multiplex IF</span>
+                        <span class="chip">Halo / inForm</span>
+                        <span class="chip">DICOM preprocessing</span>
+                        <span class="chip">Whole-slide imaging</span>
+                    </div>
                 </div>
 
                 <div class="skill-cat">
                     <p class="skill-cat-label">Bioinformatics &amp; Data Science</p>
-                    <p>
-                        scRNA-seq (Scanpy, Seurat)<br>
-                        Statistical Modeling &middot; Design of Experiments<br>
-                        Data Visualization (Matplotlib, Seaborn)<br>
-                        Molecular Docking (AutoDock)
-                    </p>
+                    <div class="skill-chips">
+                        <span class="chip">scRNA-seq</span>
+                        <span class="chip">Scanpy</span>
+                        <span class="chip">Seurat</span>
+                        <span class="chip">Statistical Modeling</span>
+                        <span class="chip">Design of Experiments</span>
+                        <span class="chip">Matplotlib</span>
+                        <span class="chip">Seaborn</span>
+                        <span class="chip">AutoDock</span>
+                    </div>
                 </div>
 
             </div>
