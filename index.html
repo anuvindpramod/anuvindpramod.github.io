@@ -6,28 +6,64 @@
     <title>Anuvind Pramod</title>
     <meta name="description" content="Anuvind Pramod — MS student at IISER Pune and Master's Thesis Fellow at Jug Lab, Human Technopole. Research in AI for Medicine and Medical Imaging.">
 
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://anuvindpramod.github.io">
+    <meta property="og:title"       content="Anuvind Pramod">
+    <meta property="og:description" content="Research in AI for Medicine and Medical Imaging. MS student at IISER Pune, Master's thesis at Jug Lab, Human Technopole, Milan.">
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:title"       content="Anuvind Pramod">
+    <meta name="twitter:description" content="Research in AI for Medicine and Medical Imaging.">
+
+    <!-- Favicon (inline SVG, no extra file needed) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d4ed8'/><text x='16' y='22' font-family='system-ui,sans-serif' font-size='13' font-weight='700' fill='white' text-anchor='middle'>AP</text></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
     <style>
+        /* ── Tokens ── */
         :root {
-            --bg:              #ffffff;
-            --bg-subtle:       #f9fafb;
-            --text:            #111827;
-            --text-secondary:  #4b5563;
-            --text-tertiary:   #9ca3af;
-            --accent:          #1d4ed8;
-            --accent-bg:       #eff6ff;
-            --border:          #e5e7eb;
-            --border-subtle:   #f3f4f6;
-            --green:           #15803d;
-            --green-bg:        #f0fdf4;
-            --green-border:    #bbf7d0;
+            --bg:             #ffffff;
+            --bg-subtle:      #f9fafb;
+            --text:           #111827;
+            --text-secondary: #4b5563;
+            --text-tertiary:  #9ca3af;
+            --accent:         #1d4ed8;
+            --accent-bg:      #eff6ff;
+            --border:         #e5e7eb;
+            --border-subtle:  #f3f4f6;
+            --green:          #15803d;
+            --green-bg:       #f0fdf4;
+            --green-border:   #bbf7d0;
+            --nav-bg:         rgba(255,255,255,0.92);
+            --nav-mobile-bg:  #ffffff;
         }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg:             #0f172a;
+                --bg-subtle:      #1e293b;
+                --text:           #f1f5f9;
+                --text-secondary: #94a3b8;
+                --text-tertiary:  #475569;
+                --accent:         #60a5fa;
+                --accent-bg:      #1e3a5f;
+                --border:         #334155;
+                --border-subtle:  #1e293b;
+                --green:          #4ade80;
+                --green-bg:       #052e16;
+                --green-border:   #166534;
+                --nav-bg:         rgba(15,23,42,0.92);
+                --nav-mobile-bg:  #0f172a;
+            }
+            .pub-badge { background: #422006; color: #fde68a; border-color: #92400e; }
+            #toast     { background: #334155; }
+        }
 
+        /* ── Reset ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
 
         body {
@@ -42,7 +78,7 @@
         a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
-        /* ── Skip link ── */
+        /* ── Skip link (accessibility) ── */
         .skip-link {
             position: absolute; top: -9999px; left: 1rem;
             background: var(--accent); color: white;
@@ -54,7 +90,7 @@
         /* ── Nav ── */
         header {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(255,255,255,0.92);
+            background: var(--nav-bg);
             backdrop-filter: saturate(180%) blur(12px);
             -webkit-backdrop-filter: saturate(180%) blur(12px);
             border-bottom: 1px solid var(--border);
@@ -62,40 +98,63 @@
         nav {
             max-width: 760px; margin: 0 auto;
             padding: 0 1.5rem; height: 56px;
-            display: flex; align-items: center;
-            justify-content: space-between;
+            display: flex; align-items: center; justify-content: space-between;
         }
         .nav-name {
             font-weight: 600; font-size: 0.95rem;
-            color: var(--text); text-decoration: none;
-            letter-spacing: -0.01em;
+            color: var(--text); text-decoration: none; letter-spacing: -0.01em;
         }
         .nav-name:hover { color: var(--accent); text-decoration: none; }
 
         .nav-links {
-            list-style: none; display: flex;
-            gap: 1.75rem; align-items: center;
+            list-style: none; display: flex; gap: 1.75rem; align-items: center;
         }
         .nav-links a {
             font-size: 0.875rem; color: var(--text-secondary);
             font-weight: 500; text-decoration: none;
-            transition: color 0.15s;
+            transition: color 0.15s; position: relative;
         }
+        /* Animated underline for active section */
+        .nav-links a:not(.cv-btn)::after {
+            content: ''; position: absolute;
+            bottom: -3px; left: 0; right: 0;
+            height: 1.5px; background: var(--accent);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.2s ease;
+        }
+        .nav-links a:not(.cv-btn).active { color: var(--text); }
+        .nav-links a:not(.cv-btn).active::after { transform: scaleX(1); }
         .nav-links a:hover { color: var(--text); text-decoration: none; }
         .nav-links .cv-btn {
-            color: var(--accent);
-            border: 1px solid var(--accent);
+            color: var(--accent); border: 1px solid var(--accent);
             padding: 0.28rem 0.7rem; border-radius: 4px;
             font-size: 0.8rem; transition: all 0.15s;
         }
         .nav-links .cv-btn:hover {
             background: var(--accent); color: white; text-decoration: none;
         }
+
+        /* Hamburger → X animation */
         .nav-toggle {
-            display: none; background: none; border: none;
-            cursor: pointer; padding: 0.4rem; color: var(--text);
-            line-height: 0;
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none;
+            cursor: pointer; padding: 0.4rem; margin: -0.4rem;
         }
+        .nav-toggle span {
+            display: block; width: 20px; height: 1.5px;
+            background: var(--text); transform-origin: center;
+            transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.2s;
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* Mobile nav backdrop */
+        .nav-backdrop {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.3); z-index: 99;
+        }
+        .nav-backdrop.visible { display: block; }
 
         /* ── Layout ── */
         main { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
@@ -103,6 +162,7 @@
         section {
             padding: 3.5rem 0;
             border-bottom: 1px solid var(--border-subtle);
+            scroll-margin-top: 72px; /* offset for sticky nav */
         }
         section:last-of-type { border-bottom: none; }
 
@@ -120,34 +180,24 @@
             grid-template-columns: 112px 1fr;
             gap: 2.25rem; align-items: start;
         }
-
         .profile-photo {
-            width: 112px; height: 112px; border-radius: 8px;
-            background: var(--bg-subtle); border: 1px solid var(--border);
+            width: 112px; height: 112px;
+            border-radius: 50%; /* circular */
+            background: var(--bg-subtle); border: 2px solid var(--border);
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0; font-size: 1.5rem; font-weight: 600;
             color: var(--text-tertiary); overflow: hidden;
         }
-        .profile-photo img {
-            width: 100%; height: 100%; object-fit: cover; border-radius: 8px;
-        }
+        .profile-photo img { width: 100%; height: 100%; object-fit: cover; }
 
         h1 {
             font-size: 1.875rem; font-weight: 700;
-            letter-spacing: -0.03em; line-height: 1.1;
-            margin-bottom: 0.3rem;
+            letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.3rem;
         }
-        .about-position {
-            font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 0.15rem;
-        }
-        .about-affil {
-            font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 1.5rem;
-        }
+        .about-position { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 0.15rem; }
+        .about-affil    { font-size: 0.875rem;  color: var(--text-tertiary);  margin-bottom: 1.5rem; }
 
-        .bio {
-            font-size: 0.9375rem; color: var(--text-secondary);
-            margin-bottom: 0.9rem; line-height: 1.75;
-        }
+        .bio { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 0.9rem; line-height: 1.75; }
         .bio strong { color: var(--text); font-weight: 600; }
 
         .status-pill {
@@ -155,17 +205,20 @@
             font-size: 0.8125rem; font-weight: 500;
             color: var(--green); background: var(--green-bg);
             border: 1px solid var(--green-border);
-            border-radius: 100px; padding: 0.3rem 0.8rem;
-            margin-bottom: 1.25rem;
+            border-radius: 100px; padding: 0.3rem 0.8rem; margin-bottom: 1.25rem;
         }
         .status-pill .dot {
-            width: 6px; height: 6px;
-            background: var(--green); border-radius: 50%; flex-shrink: 0;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--green); flex-shrink: 0;
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.35; }
         }
 
         .links-row {
-            display: flex; flex-wrap: wrap;
-            gap: 0.35rem 0.9rem; align-items: center;
+            display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; align-items: center;
         }
         .links-row a,
         .links-row button {
@@ -178,24 +231,20 @@
         .links-row button:hover { color: var(--accent); text-decoration: none; }
         .links-row .sep { color: var(--text-tertiary); }
 
-        /* ── Entry list (shared by Research + Publications) ── */
+        /* ── Entry list (Research + Publications) ── */
         .entry-list { display: flex; flex-direction: column; }
-
         .entry { padding: 1.5rem 0; border-top: 1px solid var(--border); }
         .entry:first-child { border-top: none; padding-top: 0; }
 
         .entry-meta {
             font-size: 0.78rem; font-weight: 500;
-            color: var(--text-tertiary); letter-spacing: 0.025em;
-            margin-bottom: 0.35rem;
+            color: var(--text-tertiary); letter-spacing: 0.025em; margin-bottom: 0.35rem;
         }
         .entry-title {
             font-size: 0.9375rem; font-weight: 600;
             color: var(--text); line-height: 1.4; margin-bottom: 0.5rem;
         }
-        .entry-body {
-            font-size: 0.875rem; color: var(--text-secondary); line-height: 1.72;
-        }
+        .entry-body { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.72; }
         .entry-body strong { color: var(--text); font-weight: 600; }
 
         /* ── Publications ── */
@@ -206,30 +255,17 @@
             border: 1px solid #fde047; border-radius: 4px;
             padding: 0.1rem 0.45rem; margin-bottom: 0.4rem;
         }
-        .pub-type {
-            font-size: 0.78rem; font-weight: 500;
-            color: var(--text-tertiary); letter-spacing: 0.025em; margin-bottom: 0.2rem;
-        }
-        .pub-title {
-            font-size: 0.9375rem; font-weight: 600;
-            color: var(--text); line-height: 1.45; margin-bottom: 0.3rem;
-        }
+        .pub-type { font-size: 0.78rem; font-weight: 500; color: var(--text-tertiary); letter-spacing: 0.025em; margin-bottom: 0.2rem; }
+        .pub-title { font-size: 0.9375rem; font-weight: 600; color: var(--text); line-height: 1.45; margin-bottom: 0.3rem; }
         .pub-venue { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.55; }
-        .more-note {
-            margin-top: 1.5rem; font-size: 0.875rem;
-            color: var(--text-tertiary); font-style: italic;
-        }
+        .more-note { margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-tertiary); font-style: italic; }
 
         /* ── Skills ── */
-        .skills-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem;
-        }
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem; }
         .skill-cat-label {
-            font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 0.08em; text-transform: uppercase;
-            color: var(--text-tertiary);
-            padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
-            margin-bottom: 0.6rem;
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-tertiary); padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border); margin-bottom: 0.6rem;
         }
         .skill-cat p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.9; }
 
@@ -238,14 +274,12 @@
             background: var(--bg-subtle); border: 1px dashed var(--border);
             border-radius: 8px; padding: 2rem 1.75rem; text-align: center;
         }
-        .blog-card strong {
-            display: block; font-size: 1rem; color: var(--text); margin-bottom: 0.4rem;
-        }
+        .blog-card strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 0.4rem; }
         .blog-card p { font-size: 0.9rem; color: var(--text-secondary); }
 
-        /* ── Toast ── */
+        /* ── Toast (bottom-left) ── */
         #toast {
-            position: fixed; bottom: 1.5rem; right: 1.5rem;
+            position: fixed; bottom: 1.5rem; left: 1.5rem;
             background: #1f2937; color: white;
             padding: 0.65rem 1.1rem; border-radius: 6px; font-size: 0.85rem;
             opacity: 0; transform: translateY(6px);
@@ -254,10 +288,24 @@
         }
         #toast.show { opacity: 1; transform: translateY(0); }
 
+        /* ── Back to top (bottom-right) ── */
+        #back-to-top {
+            position: fixed; bottom: 1.5rem; right: 1.5rem;
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--text); color: var(--bg);
+            border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transform: translateY(10px);
+            transition: opacity 0.25s, transform 0.25s, background 0.15s;
+            z-index: 90;
+        }
+        #back-to-top.visible { opacity: 0.55; pointer-events: auto; transform: translateY(0); }
+        #back-to-top:hover   { opacity: 1; background: var(--accent); color: white; }
+
         /* ── Footer ── */
         footer {
-            max-width: 760px; margin: 0 auto;
-            padding: 2rem 1.5rem;
+            max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem;
             border-top: 1px solid var(--border);
             display: flex; justify-content: space-between; align-items: center;
             font-size: 0.85rem; color: var(--text-tertiary);
@@ -271,26 +319,33 @@
         @media (max-width: 600px) {
             .nav-links {
                 display: none; position: fixed; top: 56px;
-                left: 0; right: 0; background: white;
+                left: 0; right: 0;
+                background: var(--nav-mobile-bg);
                 border-bottom: 1px solid var(--border);
                 flex-direction: column; padding: 1.25rem 1.5rem; gap: 1rem;
+                z-index: 100;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
             }
             .nav-links.open { display: flex; }
-            .nav-links a { font-size: 1rem; }
-            .nav-toggle { display: block; }
+            .nav-links a    { font-size: 1rem; }
+            .nav-toggle     { display: flex; }
 
-            .about-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-            .profile-photo { width: 88px; height: 88px; font-size: 1.25rem; }
-            h1 { font-size: 1.625rem; }
-
-            .skills-grid { grid-template-columns: 1fr; gap: 1.75rem; }
-            footer { flex-direction: column; align-items: flex-start; }
+            .about-grid     { grid-template-columns: 1fr; gap: 1.25rem; }
+            .profile-photo  { width: 88px; height: 88px; font-size: 1.25rem; }
+            h1              { font-size: 1.625rem; }
+            .skills-grid    { grid-template-columns: 1fr; gap: 1.75rem; }
+            footer          { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
     <a href="#about" class="skip-link">Skip to content</a>
     <div id="toast" role="status" aria-live="polite"></div>
+    <button id="back-to-top" aria-label="Back to top">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+            <path d="M6 1.5L11 8H1L6 1.5Z"/>
+        </svg>
+    </button>
 
     <!-- ── Navigation ── -->
     <header>
@@ -305,11 +360,7 @@
                 <li><a href="Anuvind_Pramod_CV%20(5).pdf" class="cv-btn" target="_blank" rel="noopener">CV ↗</a></li>
             </ul>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <rect x="2" y="5"    width="16" height="1.5" rx="0.75"/>
-                    <rect x="2" y="9.25" width="16" height="1.5" rx="0.75"/>
-                    <rect x="2" y="13.5" width="16" height="1.5" rx="0.75"/>
-                </svg>
+                <span></span><span></span><span></span>
             </button>
         </nav>
     </header>
@@ -318,20 +369,21 @@
         <!-- ── About ── -->
         <section id="about">
             <div class="about-grid">
-                <div class="profile-photo"><img src="photo.jpg" alt="Anuvind Pramod"></div>
-
+                <div class="profile-photo">
+                    <img src="photo.jpg" alt="Anuvind Pramod">
+                </div>
                 <div>
                     <h1>Anuvind Pramod</h1>
-                    <p class="about-position">Master's Thesis Fellow &middot; Jug Lab, Human Technopole, Milan</p>
+                    <p class="about-position">Master&rsquo;s Thesis Fellow &middot; Jug Lab, Human Technopole, Milan</p>
                     <p class="about-affil">BS-MS (Interdisciplinary) &middot; IISER Pune &middot; Expected May 2026</p>
 
                     <p class="bio">
                         I am a final-year student at <a href="https://www.iiserpune.ac.in" target="_blank" rel="noopener">IISER Pune</a>,
-                        completing my Master's thesis at the Jug Lab, Human Technopole, Milan,
+                        completing my Master&rsquo;s thesis at the Jug Lab, Human Technopole, Milan,
                         advised by Dr. Florian Jug. My thesis develops deep learning models for
                         <strong>biological age estimation from screening mammography</strong>,
-                        using &ldquo;mammographic age gap&rdquo; as a novel imaging biomarker
-                        for personalized breast cancer risk stratification.
+                        using &ldquo;mammographic age gap&rdquo; as a novel imaging biomarker for
+                        personalized breast cancer risk stratification.
                     </p>
                     <p class="bio">
                         My interests span <strong>medical image analysis</strong>,
@@ -517,39 +569,47 @@
     </footer>
 
     <script>
-        // ── Mobile nav ──
-        const toggle = document.getElementById('nav-toggle');
-        const menu   = document.getElementById('nav-menu');
+        // ── Mobile nav with backdrop + scroll lock ──
+        const toggle   = document.getElementById('nav-toggle');
+        const menu     = document.getElementById('nav-menu');
+        const backdrop = Object.assign(document.createElement('div'), { className: 'nav-backdrop' });
+        document.body.appendChild(backdrop);
 
-        toggle.addEventListener('click', () => {
-            const isOpen = menu.classList.toggle('open');
-            toggle.setAttribute('aria-expanded', isOpen);
-        });
+        const openMenu  = () => { menu.classList.add('open');    backdrop.classList.add('visible');    toggle.setAttribute('aria-expanded', 'true');  document.body.style.overflow = 'hidden'; };
+        const closeMenu = () => { menu.classList.remove('open'); backdrop.classList.remove('visible'); toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; };
 
-        // Close when clicking outside
-        document.addEventListener('click', e => {
-            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-                menu.classList.remove('open');
-                toggle.setAttribute('aria-expanded', false);
-            }
-        });
+        toggle.addEventListener('click',  () => menu.classList.contains('open') ? closeMenu() : openMenu());
+        backdrop.addEventListener('click', closeMenu);
+        menu.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
 
-        // Close when a nav link is clicked
-        menu.querySelectorAll('a').forEach(link =>
-            link.addEventListener('click', () => {
-                menu.classList.remove('open');
-                toggle.setAttribute('aria-expanded', false);
-            })
-        );
+        // Escape key closes nav
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-        // ── Copy email to clipboard ──
+        // ── Active nav link via IntersectionObserver ──
+        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+
+        document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+        // ── Back to top ──
+        const backBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => backBtn.classList.toggle('visible', scrollY > 400), { passive: true });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // ── Copy email ──
         function copyEmail(email) {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
+            if (navigator.clipboard?.writeText) {
                 navigator.clipboard.writeText(email)
                     .then(() => showToast('Copied: ' + email))
-                    .catch(() => { window.location.href = 'mailto:' + email; });
+                    .catch(() => { location.href = 'mailto:' + email; });
             } else {
-                window.location.href = 'mailto:' + email;
+                location.href = 'mailto:' + email;
             }
         }
 
