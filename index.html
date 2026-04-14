@@ -6,7 +6,6 @@
     <title>Anuvind Pramod</title>
     <meta name="description" content="Anuvind Pramod — MS student at IISER Pune and Master's Thesis Fellow at Jug Lab, Human Technopole. Research in AI for Medicine and Medical Imaging.">
 
-    <!-- Open Graph / social sharing -->
     <meta property="og:type"        content="website">
     <meta property="og:url"         content="https://anuvindpramod.github.io">
     <meta property="og:title"       content="Anuvind Pramod">
@@ -15,30 +14,34 @@
     <meta name="twitter:title"       content="Anuvind Pramod">
     <meta name="twitter:description" content="Research in AI for Medicine and Medical Imaging.">
 
-    <!-- Favicon (inline SVG, no extra file needed) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d4ed8'/><text x='16' y='22' font-family='system-ui,sans-serif' font-size='13' font-weight='700' fill='white' text-anchor='middle'>AP</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563eb'/><text x='16' y='22' font-family='system-ui,sans-serif' font-size='13' font-weight='700' fill='white' text-anchor='middle'>AP</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
     <style>
-        /* ── Tokens ── */
+        /* ── Design tokens ── */
         :root {
             --bg:             #ffffff;
-            --bg-subtle:      #f9fafb;
-            --text:           #111827;
-            --text-secondary: #4b5563;
-            --text-tertiary:   #6b7280;
-            --accent:         #1d4ed8;
+            --bg-subtle:      #f8fafc;
+            --text:           #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary:  #6b7280;
+            --accent:         #2563eb;
             --accent-bg:      #eff6ff;
-            --border:         #e5e7eb;
-            --border-subtle:  #f3f4f6;
-            --green:          #15803d;
+            --accent-border:  #bfdbfe;
+            --border:         #e2e8f0;
+            --border-subtle:  #f1f5f9;
+            --green:          #16a34a;
             --green-bg:       #f0fdf4;
             --green-border:   #bbf7d0;
-            --nav-bg:         rgba(255,255,255,0.92);
+            --nav-bg:         rgba(255,255,255,0.88);
             --nav-mobile-bg:  #ffffff;
+            --shadow-sm:      0 1px 3px rgba(15,23,42,0.08), 0 1px 2px rgba(15,23,42,0.04);
+            --shadow-md:      0 4px 8px rgba(15,23,42,0.08), 0 2px 4px rgba(15,23,42,0.05);
+            --radius:         8px;
+            --radius-lg:      12px;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -50,6 +53,7 @@
                 --text-tertiary:  #7e8ea6;
                 --accent:         #60a5fa;
                 --accent-bg:      #1e3a5f;
+                --accent-border:  #1d4ed8;
                 --border:         #334155;
                 --border-subtle:  #1e293b;
                 --green:          #4ade80;
@@ -57,16 +61,15 @@
                 --green-border:   #166534;
                 --nav-bg:         rgba(15,23,42,0.92);
                 --nav-mobile-bg:  #0f172a;
+                --shadow-sm:      0 1px 3px rgba(0,0,0,0.3);
+                --shadow-md:      0 4px 8px rgba(0,0,0,0.25);
             }
+            h2 { color: var(--text-secondary); }
             .pub-badge { background: #422006; color: #fde68a; border-color: #92400e; }
-            #toast     { background: #334155; }
-
-            /* Contrast fixes for tertiary text on dark backgrounds */
-            h2             { color: var(--text-secondary); }
-            .more-note     { color: var(--text-secondary); }
+            .pub-featured { background: rgba(30,58,95,0.45); border-color: #1e3a8a; }
+            #toast { background: #334155; }
+            .more-note { color: var(--text-secondary); }
             .skill-cat-label { color: var(--text-secondary); }
-
-            /* Skills: colored tinted cards so each category is visually distinct */
             .skill-cat { border-color: #334155; }
             .skill-cat:nth-child(1) { background: rgba(59,130,246,0.15);  border-color: rgba(59,130,246,0.45); }
             .skill-cat:nth-child(2) { background: rgba(139,92,246,0.15);  border-color: rgba(139,92,246,0.45); }
@@ -74,6 +77,12 @@
             .skill-cat:nth-child(4) { background: rgba(16,185,129,0.15);  border-color: rgba(16,185,129,0.45); }
             .chip       { background: rgba(255,255,255,0.07); color: #e2e8f0; border-color: rgba(255,255,255,0.12); }
             .chip:hover { background: var(--accent-bg); color: var(--accent); border-color: var(--accent); }
+            .research-timeline::before { background: #334155; }
+            .research-timeline .entry::before { background: #0f172a; border-color: #475569; }
+            .research-timeline .entry:first-child::before {
+                background: var(--accent); border-color: var(--accent);
+                box-shadow: 0 0 0 3px rgba(96,165,250,0.2);
+            }
         }
 
         /* ── Reset ── */
@@ -92,7 +101,7 @@
         a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
-        /* ── Skip link (accessibility) ── */
+        /* ── Skip link ── */
         .skip-link {
             position: absolute; top: -9999px; left: 1rem;
             background: var(--accent); color: white;
@@ -105,8 +114,8 @@
         header {
             position: sticky; top: 0; z-index: 100;
             background: var(--nav-bg);
-            backdrop-filter: saturate(180%) blur(12px);
-            -webkit-backdrop-filter: saturate(180%) blur(12px);
+            backdrop-filter: saturate(180%) blur(16px);
+            -webkit-backdrop-filter: saturate(180%) blur(16px);
             border-bottom: 1px solid var(--border);
         }
         nav {
@@ -120,15 +129,12 @@
         }
         .nav-name:hover { color: var(--accent); text-decoration: none; }
 
-        .nav-links {
-            list-style: none; display: flex; gap: 1.75rem; align-items: center;
-        }
+        .nav-links { list-style: none; display: flex; gap: 1.75rem; align-items: center; }
         .nav-links a {
             font-size: 0.875rem; color: var(--text-secondary);
             font-weight: 500; text-decoration: none;
             transition: color 0.15s; position: relative;
         }
-        /* Animated underline for active section */
         .nav-links a:not(.cv-btn)::after {
             content: ''; position: absolute;
             bottom: -3px; left: 0; right: 0;
@@ -140,19 +146,17 @@
         .nav-links a:not(.cv-btn).active::after { transform: scaleX(1); }
         .nav-links a:hover { color: var(--text); text-decoration: none; }
         .nav-links .cv-btn {
-            color: var(--accent); border: 1px solid var(--accent);
-            padding: 0.28rem 0.7rem; border-radius: 4px;
-            font-size: 0.8rem; transition: all 0.15s;
+            color: var(--accent); border: 1px solid currentColor;
+            padding: 0.28rem 0.7rem; border-radius: 5px;
+            font-size: 0.8rem; transition: background 0.15s, color 0.15s;
         }
-        .nav-links .cv-btn:hover {
-            background: var(--accent); color: white; text-decoration: none;
-        }
+        .nav-links .cv-btn:hover { background: var(--accent); color: white; text-decoration: none; }
 
-        /* Hamburger → X animation */
+        /* Hamburger */
         .nav-toggle {
             display: none; flex-direction: column; gap: 5px;
-            background: none; border: none;
-            cursor: pointer; padding: 0.4rem; margin: -0.4rem;
+            background: none; border: none; cursor: pointer;
+            padding: 0.4rem; margin: -0.4rem;
         }
         .nav-toggle span {
             display: block; width: 20px; height: 1.5px;
@@ -163,7 +167,6 @@
         .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
         .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-        /* Mobile nav backdrop */
         .nav-backdrop {
             display: none; position: fixed; inset: 0;
             background: rgba(0,0,0,0.3); z-index: 99;
@@ -174,39 +177,50 @@
         main { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
 
         section {
-            padding: 3.5rem 0;
+            padding: 4rem 0;
             border-bottom: 1px solid var(--border-subtle);
-            scroll-margin-top: 64px; /* offset for sticky nav */
+            scroll-margin-top: 64px;
         }
         section:last-of-type { border-bottom: none; }
 
+        /* ── Section headings ── */
         h2 {
-            font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--text-tertiary); margin-bottom: 1.75rem;
+            font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--text-tertiary); margin-bottom: 2rem;
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        h2::before {
+            content: '';
+            display: block;
+            width: 18px; height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            flex-shrink: 0;
         }
 
-        /* ── About ── */
-        #about { padding-top: 3rem; }
+        /* ── About / Hero ── */
+        #about { padding-top: 3.5rem; }
 
         .about-grid {
             display: grid;
-            grid-template-columns: 112px 1fr;
-            gap: 2.25rem; align-items: start;
+            grid-template-columns: 128px 1fr;
+            gap: 2.5rem; align-items: start;
         }
         .profile-photo {
-            width: 112px; height: 112px;
-            border-radius: 50%; /* circular */
+            width: 128px; height: 128px;
+            border-radius: 50%;
             background: var(--bg-subtle); border: 2px solid var(--border);
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0; font-size: 1.5rem; font-weight: 600;
             color: var(--text-tertiary); overflow: hidden;
+            box-shadow: var(--shadow-md);
         }
         .profile-photo img { width: 100%; height: 100%; object-fit: cover; }
 
         h1 {
-            font-size: 1.875rem; font-weight: 700;
-            letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.3rem;
+            font-size: 2rem; font-weight: 700;
+            letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 0.3rem;
         }
         .about-position { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 0.15rem; }
         .about-affil    { font-size: 0.875rem;  color: var(--text-tertiary);  margin-bottom: 1.5rem; }
@@ -231,9 +245,7 @@
             50%       { opacity: 0.35; }
         }
 
-        .links-row {
-            display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; align-items: center;
-        }
+        .links-row { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; align-items: center; }
         .links-row a,
         .links-row button {
             font-size: 0.85rem; color: var(--text-secondary);
@@ -247,10 +259,48 @@
         .links-row button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
         .links-row .sep { color: var(--text-tertiary); }
 
-        /* ── Entry list (Research + Publications) ── */
-        .entry-list { display: flex; flex-direction: column; }
-        .entry { padding: 1.5rem 0; border-top: 1px solid var(--border); }
-        .entry:first-child { border-top: none; padding-top: 0; }
+        /* ── Research timeline ── */
+        .research-timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        /* Vertical connecting line */
+        .research-timeline::before {
+            content: '';
+            position: absolute;
+            left: 4px; top: 8px; bottom: 2.5rem;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .entry {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+        .entry:last-child { padding-bottom: 0; }
+
+        /* Timeline dot */
+        .research-timeline .entry::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem; top: 4px;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 1.5px solid var(--border);
+            transition: border-color 0.2s;
+            z-index: 1;
+        }
+        /* Primary (thesis) dot: filled accent + glow */
+        .research-timeline .entry:first-child::before {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+        }
+        .research-timeline .entry:hover::before { border-color: var(--accent); }
+        .research-timeline .entry:first-child:hover::before {
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.22);
+        }
 
         .entry-meta {
             font-size: 0.78rem; font-weight: 500;
@@ -259,24 +309,33 @@
         .entry-title {
             font-size: 0.9375rem; font-weight: 600;
             color: var(--text); line-height: 1.4; margin-bottom: 0.5rem;
+            transition: color 0.15s;
         }
+        .research-timeline .entry:hover .entry-title { color: var(--accent); }
         .entry-body { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.72; }
         .entry-body strong { color: var(--text); font-weight: 600; }
         .entry.minor .entry-title { font-weight: 500; color: var(--text-secondary); }
         .entry.minor .entry-body  { font-size: 0.85rem; }
 
-        /* ── Publications ── */
+        /* ── Publications — featured card ── */
+        .pub-featured {
+            background: var(--accent-bg);
+            border: 1px solid var(--accent-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.75rem;
+            box-shadow: var(--shadow-sm);
+        }
         .pub-badge {
             display: inline-block; font-size: 0.68rem; font-weight: 700;
             letter-spacing: 0.06em; text-transform: uppercase;
             background: #fef9c3; color: #854d0e;
             border: 1px solid #fde047; border-radius: 4px;
-            padding: 0.1rem 0.45rem; margin-bottom: 0.4rem;
+            padding: 0.1rem 0.45rem; margin-bottom: 0.6rem;
         }
-        .pub-type { font-size: 0.78rem; font-weight: 500; color: var(--text-tertiary); letter-spacing: 0.025em; margin-bottom: 0.2rem; }
-        .pub-title { font-size: 0.9375rem; font-weight: 600; color: var(--text); line-height: 1.45; margin-bottom: 0.3rem; }
+        .pub-type  { font-size: 0.78rem; font-weight: 500; color: var(--text-tertiary); letter-spacing: 0.025em; margin-bottom: 0.25rem; }
+        .pub-title { font-size: 0.9375rem; font-weight: 600; color: var(--text); line-height: 1.45; margin-bottom: 0.4rem; }
         .pub-venue { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.55; }
-        .more-note { margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-tertiary); font-style: italic; }
+        .more-note { margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-tertiary); font-style: italic; }
 
         /* ── Skills ── */
         .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -284,9 +343,13 @@
         .skill-cat {
             background: var(--bg-subtle);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.1rem 1.2rem 1rem;
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s, transform 0.2s;
         }
+        .skill-cat:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+
         .skill-cat-label {
             font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
             color: var(--text-tertiary); margin-bottom: 0.875rem;
@@ -314,24 +377,42 @@
 
         /* ── Blog ── */
         .blog-card {
-            background: var(--bg-subtle); border: 1px dashed var(--border);
-            border-radius: 8px; padding: 2rem 1.75rem; text-align: center;
+            background: var(--bg-subtle); border: 1.5px dashed var(--border);
+            border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center;
         }
-        .blog-card strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 0.4rem; }
+        .blog-card strong { display: block; font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
         .blog-card p { font-size: 0.9rem; color: var(--text-secondary); }
 
-        /* ── Toast (bottom-left) ── */
+        /* ── Scroll-reveal animations ── */
+        .js .anim {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+        .js .anim.anim-visible {
+            opacity: 1;
+            transform: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .js .anim { opacity: 1; transform: none; transition: none; }
+        }
+        /* Stagger delays for skill cards */
+        .js .skill-cat.anim:nth-child(2) { transition-delay: 0.07s; }
+        .js .skill-cat.anim:nth-child(3) { transition-delay: 0.14s; }
+        .js .skill-cat.anim:nth-child(4) { transition-delay: 0.21s; }
+
+        /* ── Toast ── */
         #toast {
             position: fixed; bottom: 1.5rem; left: 1.5rem;
             background: #1f2937; color: white;
-            padding: 0.65rem 1.1rem; border-radius: 6px; font-size: 0.85rem;
+            padding: 0.65rem 1.1rem; border-radius: var(--radius); font-size: 0.85rem;
             opacity: 0; transform: translateY(6px);
             transition: opacity 0.2s, transform 0.2s;
             pointer-events: none; z-index: 999;
         }
         #toast.show { opacity: 1; transform: translateY(0); }
 
-        /* ── Back to top (bottom-right) ── */
+        /* ── Back to top ── */
         #back-to-top {
             position: fixed; bottom: 1.5rem; right: 1.5rem;
             width: 36px; height: 36px; border-radius: 50%;
@@ -343,9 +424,9 @@
             transition: opacity 0.25s, transform 0.25s, background 0.15s;
             z-index: 90;
         }
-        #back-to-top.visible        { opacity: 0.75; pointer-events: auto; transform: translateY(0); }
-        #back-to-top:hover          { opacity: 1; background: var(--accent); color: white; }
-        #back-to-top:focus-visible  { outline: 2px solid var(--accent); outline-offset: 3px; opacity: 1; }
+        #back-to-top.visible       { opacity: 0.75; pointer-events: auto; transform: translateY(0); }
+        #back-to-top:hover         { opacity: 1; background: var(--accent); color: white; }
+        #back-to-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; opacity: 1; }
 
         /* ── Footer ── */
         footer {
@@ -362,23 +443,23 @@
         /* ── Responsive ── */
         @media (max-width: 600px) {
             .nav-links {
-                display: none; position: fixed; top: 56px;
-                left: 0; right: 0;
+                display: none; position: fixed; top: 56px; left: 0; right: 0;
                 background: var(--nav-mobile-bg);
                 border-bottom: 1px solid var(--border);
                 flex-direction: column; padding: 1.25rem 1.5rem; gap: 1rem;
-                z-index: 100;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                z-index: 100; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
             }
             .nav-links.open { display: flex; }
-            .nav-links a    { font-size: 1rem; }
-            .nav-toggle     { display: flex; }
+            .nav-links a { font-size: 1rem; }
+            .nav-toggle { display: flex; }
 
-            .about-grid     { grid-template-columns: 1fr; gap: 1.25rem; }
-            .profile-photo  { width: 88px; height: 88px; font-size: 1.25rem; margin: 0 auto; }
-            h1              { font-size: 1.625rem; }
-            .skills-grid    { grid-template-columns: 1fr; }
-            footer          { flex-direction: column; align-items: flex-start; }
+            .about-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .profile-photo { width: 96px; height: 96px; font-size: 1.25rem; margin: 0 auto; }
+            h1 { font-size: 1.75rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skill-cat:hover { transform: none; }
+            footer { flex-direction: column; align-items: flex-start; }
+            .research-timeline { padding-left: 1.25rem; }
         }
     </style>
 </head>
@@ -414,7 +495,7 @@
         <section id="about">
             <div class="about-grid">
                 <div class="profile-photo">
-                    <img src="photo.jpg" alt="Anuvind Pramod" width="112" height="112" onerror="this.parentElement.innerHTML='AP'">
+                    <img src="photo.jpg" alt="Anuvind Pramod" width="128" height="128" onerror="this.parentElement.innerHTML='AP'">
                 </div>
                 <div>
                     <h1>Anuvind Pramod</h1>
@@ -461,9 +542,9 @@
         <!-- ── Research ── -->
         <section id="research">
             <h2>Research</h2>
-            <div class="entry-list">
+            <div class="research-timeline">
 
-                <div class="entry">
+                <div class="entry anim">
                     <p class="entry-meta">Master&rsquo;s Thesis &middot; Jug Lab, Human Technopole, Milan &middot; Jul 2025 &ndash; Present</p>
                     <p class="entry-title">Biological Age Estimation from Mammography for Breast Cancer Risk Stratification <a href="https://github.com/anuvindpramod" target="_blank" rel="noopener" style="font-size:0.8rem;font-weight:500;margin-left:0.4rem;">code ↗</a></p>
                     <p class="entry-body">
@@ -476,7 +557,7 @@
                     </p>
                 </div>
 
-                <div class="entry minor">
+                <div class="entry minor anim">
                     <p class="entry-meta">Course Project &middot; Medical Image Analysis, IISER Pune &middot; Feb &ndash; Apr 2025</p>
                     <p class="entry-title">Deep CNN for Histopathology Image Classification <a href="https://github.com/anuvindpramod" target="_blank" rel="noopener" style="font-size:0.8rem;font-weight:500;margin-left:0.4rem;">code ↗</a></p>
                     <p class="entry-body">
@@ -487,7 +568,7 @@
                     </p>
                 </div>
 
-                <div class="entry">
+                <div class="entry anim">
                     <p class="entry-meta">Research Project &middot; Tumor Microenvironment Lab &amp; Leelavati Lab, IISER Pune &middot; Aug 2024 &ndash; Jan 2025</p>
                     <p class="entry-title">Single-Cell Transcriptomic Analysis of YAP/TAZ in Breast Cancer</p>
                     <p class="entry-body">
@@ -498,7 +579,7 @@
                     </p>
                 </div>
 
-                <div class="entry">
+                <div class="entry anim">
                     <p class="entry-meta">Research Project &middot; Tumor Microenvironment Lab, IISER Pune &middot; Jan &ndash; Aug 2024</p>
                     <p class="entry-title">Spatial Protein Expression Analysis in Breast Tumor Microenvironment</p>
                     <p class="entry-body">
@@ -508,7 +589,7 @@
                     </p>
                 </div>
 
-                <div class="entry">
+                <div class="entry anim">
                     <p class="entry-meta">iGEM IISER Pune 2023 &middot; Feb &ndash; Nov 2023</p>
                     <p class="entry-title">Computational Optimization for Sustainable Aviation Fuel Production</p>
                     <p class="entry-body">
@@ -525,22 +606,20 @@
         <!-- ── Publications & Talks ── -->
         <section id="publications">
             <h2>Publications &amp; Talks</h2>
-            <div class="entry-list">
 
-                <div class="entry">
-                    <span class="pub-badge">Presented</span>
-                    <p class="pub-type">Poster &middot; Conference</p>
-                    <p class="pub-title">
-                        Deep Learning-Based Mammographic Age Estimation: Towards an Image-Based
-                        Biomarker for Cancer Risk Prediction
-                    </p>
-                    <p class="pub-venue">
-                        Cancer Research UK Data-Driven Cancer Research Conference<br>
-                        Edinburgh International Conference Centre, UK &middot; February 24&ndash;26, 2026
-                    </p>
-                </div>
-
+            <div class="pub-featured anim">
+                <span class="pub-badge">Presented</span>
+                <p class="pub-type">Poster &middot; Conference</p>
+                <p class="pub-title">
+                    Deep Learning-Based Mammographic Age Estimation: Towards an Image-Based
+                    Biomarker for Cancer Risk Prediction
+                </p>
+                <p class="pub-venue">
+                    Cancer Research UK Data-Driven Cancer Research Conference<br>
+                    Edinburgh International Conference Centre, UK &middot; February 24&ndash;26, 2026
+                </p>
             </div>
+
             <p class="more-note">Manuscript on mammographic biological age estimation in preparation.</p>
         </section>
 
@@ -549,7 +628,7 @@
             <h2>Technical Skills</h2>
             <div class="skills-grid">
 
-                <div class="skill-cat">
+                <div class="skill-cat anim">
                     <p class="skill-cat-label">Machine Learning &amp; AI</p>
                     <div class="skill-chips">
                         <span class="chip">PyTorch</span>
@@ -566,7 +645,7 @@
                     </div>
                 </div>
 
-                <div class="skill-cat">
+                <div class="skill-cat anim">
                     <p class="skill-cat-label">Programming &amp; Computing</p>
                     <div class="skill-chips">
                         <span class="chip">Python</span>
@@ -579,7 +658,7 @@
                     </div>
                 </div>
 
-                <div class="skill-cat">
+                <div class="skill-cat anim">
                     <p class="skill-cat-label">Medical Image Analysis</p>
                     <div class="skill-chips">
                         <span class="chip">Mammography</span>
@@ -591,7 +670,7 @@
                     </div>
                 </div>
 
-                <div class="skill-cat">
+                <div class="skill-cat anim">
                     <p class="skill-cat-label">Bioinformatics &amp; Data Science</p>
                     <div class="skill-chips">
                         <span class="chip">scRNA-seq</span>
@@ -611,7 +690,7 @@
         <!-- ── Blog ── -->
         <section id="blog">
             <h2>Blog</h2>
-            <div class="blog-card">
+            <div class="blog-card anim">
                 <strong>Paper reviews &amp; thoughts</strong>
                 <p>Notes on medical imaging papers, AI in medicine, and research reflections &mdash; coming soon.</p>
             </div>
@@ -628,7 +707,19 @@
     </footer>
 
     <script>
-        // ── Mobile nav with backdrop + scroll lock ──
+        // ── Scroll-reveal ──
+        document.documentElement.classList.add('js');
+        const animObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('anim-visible');
+                    animObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.05 });
+        document.querySelectorAll('.anim').forEach(el => animObs.observe(el));
+
+        // ── Mobile nav ──
         const toggle   = document.getElementById('nav-toggle');
         const menu     = document.getElementById('nav-menu');
         const backdrop = Object.assign(document.createElement('div'), { className: 'nav-backdrop' });
@@ -640,21 +731,18 @@
         toggle.addEventListener('click',  () => menu.classList.contains('open') ? closeMenu() : openMenu());
         backdrop.addEventListener('click', closeMenu);
         menu.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
-
-        // Escape key closes nav
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-        // ── Active nav link via IntersectionObserver ──
+        // ── Active nav via IntersectionObserver ──
         const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-        const observer = new IntersectionObserver(entries => {
+        const secObs   = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
                 }
             });
         }, { rootMargin: '-20% 0px -70% 0px' });
-
-        document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+        document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
 
         // ── Back to top ──
         const backBtn = document.getElementById('back-to-top');
